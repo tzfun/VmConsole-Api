@@ -26,6 +26,15 @@ public class JStatResult implements JStatTransferable {
     private String strResult;
 
     @Override
+    public String toString() {
+        return "JStatResult{" +
+                "vmId=" + vmId +
+                ", names=" + names +
+                ", snapShot=" + snapShot +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof JStatResult)) return false;

@@ -23,8 +23,17 @@ public class JStatCmd {
     private static Arguments arguments;
 
     public static void main(String[] args) {
+        System.out.println(list());
+        System.out.println(snap(8208));
         System.out.println(clazz(8208));
-        System.out.println(clazz(8208));
+        System.out.println(gc(8208));
+        System.out.println(gcNew(8208));
+        System.out.println(gcOld(8208));
+        System.out.println(gcNewCapacity(8208));
+        System.out.println(gcOldCapacity(8208));
+        System.out.println(gcMetaCapacity(8208));
+        System.out.println(compiler(8208));
+        System.out.println(printCompilation(8208));
     }
 
     /**
