@@ -211,7 +211,7 @@ public class PStackTool extends MyTool {
                 //  打印死锁堆栈信息
                 try {
                     DeadlockDetector.print(out);
-                    jStackResult.setDeadlocks(out.toString());
+                    jStackResult.setDeadlocks(outputStream.toString());
                     //  重用缓存区
                     outputStream.reset();
                 } catch (Exception var16) {
@@ -303,9 +303,13 @@ public class PStackTool extends MyTool {
                                 }
                             }
                         }
-                        jniStack.add(tempInfo);
+
                     } catch (Exception var17) {
-                        var17.printStackTrace();
+                        var17.printStackTrace(out);
+                        tempInfo.append(outputStream.toString());
+                        outputStream.reset();
+                    }finally {
+                        jniStack.add(tempInfo);
                     }
 
                     //  并发锁
@@ -318,6 +322,7 @@ public class PStackTool extends MyTool {
                         }
                     }
                 }
+
                 jStackResult.setJniStack(jniStack);
             } else if (this.getDebugeeType() == 2) {
                 closeStream(out,outputStream);

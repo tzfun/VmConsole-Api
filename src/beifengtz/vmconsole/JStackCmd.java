@@ -2,6 +2,11 @@ package beifengtz.vmconsole;
 
 import beifengtz.vmconsole.entity.JStackResult;
 import beifengtz.vmconsole.tools.jstack.JStackTool;
+import com.sun.tools.attach.AttachNotSupportedException;
+import com.sun.tools.attach.VirtualMachine;
+import sun.tools.attach.HotSpotVirtualMachine;
+
+import java.io.InputStream;
 
 /**
  * @author beifengtz
@@ -89,15 +94,19 @@ public class JStackCmd {
 
             runJStackTool(var2, var3, var6);
         } else {
-            //  生成dump文件暂不支持
-            throw new Exception("This command parameter is not supported at this time.");
+            String var9 = var0[var4];
+            String[] var10;
+            if (var3) {
+                var10 = new String[]{"-l"};
+            } else {
+                var10 = new String[0];
+            }
+
+            runThreadDump(var9, var10);
         }
     }
 
     private static void runJStackTool(boolean var0, boolean var1, String[] var2) throws Exception {
-
-        //  反射获取JStack类
-//        Class var3 = loadSAToolClass();
 
         if (var0) {
             //  显示Java和C/C++的堆栈
@@ -110,15 +119,8 @@ public class JStackCmd {
             var2 = prepend("-l", var2);
         }
 
-        //  获取HotSpot内部Tool对象
-
         JStackResult jStackResult = new JStackResult();
         JStackTool.init(var2,jStackResult);
-//        Class[] var4 = new Class[]{String[].class, PrintStream.class};
-//        //  获取init方法
-//        Method var5 = var3.getDeclaredMethod("init", var4);
-//        //  反射的方式调用函数
-//        var5.invoke((Object) null, var2, ps);
 
         System.out.println("------------end-------------");
         System.out.println(jStackResult);
@@ -138,6 +140,42 @@ public class JStackCmd {
         } catch (Exception var1) {
             return null;
         }
+    }
+
+    private static void runThreadDump(String var0, String[] var1) throws Exception {
+        VirtualMachine var2 = null;
+
+        try {
+            var2 = VirtualMachine.attach(var0);
+        } catch (Exception var7) {
+            String var4 = var7.getMessage();
+            if (var4 != null) {
+                System.err.println(var0 + ": " + var4);
+            } else {
+                var7.printStackTrace();
+            }
+
+            if (var7 instanceof AttachNotSupportedException && loadSAClass() != null) {
+                System.err.println("The -F option can be used when the target process is not responding");
+            }
+
+            System.exit(1);
+        }
+
+        InputStream var3 = ((HotSpotVirtualMachine)var2).remoteDataDump((Object[])var1);
+        byte[] var8 = new byte[256];
+
+        int var5;
+        do {
+            var5 = var3.read(var8);
+            if (var5 > 0) {
+                String var6 = new String(var8, 0, var5, "UTF-8");
+                System.out.print(var6);
+            }
+        } while(var5 > 0);
+
+        var3.close();
+        var2.detach();
     }
 
     /**
