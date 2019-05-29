@@ -1,11 +1,7 @@
 package beifengtz.vmconsole;
 
-import beifengtz.vmconsole.tools.jstack.PStackTool;
-import beifengtz.vmconsole.tools.jstack.StackTraceTool;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.lang.reflect.Method;
+import beifengtz.vmconsole.entity.JStackResult;
+import beifengtz.vmconsole.tools.jstack.JStackTool;
 
 /**
  * @author beifengtz
@@ -29,7 +25,7 @@ import java.lang.reflect.Method;
  */
 public class JStackCmd {
     public static void main(String[] args) throws Exception {
-        run(new String[]{"-F", "7160"});
+        run(new String[]{"-F", "3156"});
     }
 
     public static void run(String[] var0) throws IllegalArgumentException, Exception {
@@ -99,48 +95,33 @@ public class JStackCmd {
     }
 
     private static void runJStackTool(boolean var0, boolean var1, String[] var2) throws Exception {
-        boolean mixedMode = false;
-        boolean concurrentLocks = false;
 
         //  反射获取JStack类
-        Class var3 = loadSAToolClass();
-        if (var3 == null) {
-            usage();
-        }
+//        Class var3 = loadSAToolClass();
 
         if (var0) {
             //  显示Java和C/C++的堆栈
             var2 = prepend("-m", var2);
-            mixedMode = true;
 
         }
 
         if (var1) {
             //  除堆栈外，显示关于锁的附加信息
             var2 = prepend("-l", var2);
-            concurrentLocks = true;
         }
 
         //  获取HotSpot内部Tool对象
-        //  内存流（针对程序是输出，针对内存是输入）
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
 
-        //  使用打印流，将结果打印至内存
-        PrintStream ps = new PrintStream(outputStream);
-
-
-        Class[] var4 = new Class[]{String[].class, PrintStream.class};
-        //  获取init方法
-        Method var5 = var3.getDeclaredMethod("init", var4);
-        //  反射的方式调用函数
-        var5.invoke((Object) null, var2, ps);
+        JStackResult jStackResult = new JStackResult();
+        JStackTool.init(var2,jStackResult);
+//        Class[] var4 = new Class[]{String[].class, PrintStream.class};
+//        //  获取init方法
+//        Method var5 = var3.getDeclaredMethod("init", var4);
+//        //  反射的方式调用函数
+//        var5.invoke((Object) null, var2, ps);
 
         System.out.println("------------end-------------");
-
-        System.out.println(outputStream);
-
-        ps.close();
-        outputStream.close();
+        System.out.println(jStackResult);
     }
 
     private static Class<?> loadSAToolClass() {

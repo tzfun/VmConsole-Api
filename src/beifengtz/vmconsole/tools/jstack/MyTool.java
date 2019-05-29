@@ -1,6 +1,8 @@
 package beifengtz.vmconsole.tools.jstack;
 
 import java.io.PrintStream;
+
+import beifengtz.vmconsole.entity.JStackResult;
 import sun.jvm.hotspot.HotSpotAgent;
 import sun.jvm.hotspot.debugger.DebuggerException;
 import sun.jvm.hotspot.debugger.JVMDebugger;
@@ -78,9 +80,17 @@ public abstract class MyTool implements Runnable {
         this.printUsage();
     }
 
-    protected void execute(String[] args) {
+    public void execute(String[] args, PrintStream ps) {
         try {
-            this.start(args);
+            this.start(args, ps, ps);
+        } finally {
+            this.stop();
+        }
+    }
+
+    public void execute(String[] args, JStackResult jStackResult) throws Exception{
+        try {
+            this.start(args, jStackResult);
         } finally {
             this.stop();
         }
@@ -93,7 +103,7 @@ public abstract class MyTool implements Runnable {
 
     }
 
-    private int start(String[] args) {
+    private int start(String[] args, PrintStream out, PrintStream err) {
         if (args.length >= 1 && args.length <= 2) {
             if (args[0].startsWith("-h")) {
                 this.usage();
@@ -102,13 +112,11 @@ public abstract class MyTool implements Runnable {
                 this.usage();
                 return 1;
             } else {
-                PrintStream err = System.err;
-                PrintStream out = System.out;
                 int pid = 0;
                 String coreFileName = null;
                 String executableName = null;
                 String remoteServer = null;
-                switch(args.length) {
+                switch (args.length) {
                     case 1:
                         try {
                             pid = Integer.parseInt(args[0]);
@@ -131,7 +139,7 @@ public abstract class MyTool implements Runnable {
                 this.agent = new HotSpotAgent();
 
                 try {
-                    switch(this.debugeeType) {
+                    switch (this.debugeeType) {
                         case 0:
                             out.println("Attaching to process ID " + pid + ", please wait...");
                             this.agent.attach(pid);
@@ -145,7 +153,7 @@ public abstract class MyTool implements Runnable {
                             this.agent.attach(remoteServer);
                     }
                 } catch (DebuggerException var10) {
-                    switch(this.debugeeType) {
+                    switch (this.debugeeType) {
                         case 0:
                             err.print("Error attaching to process: ");
                             break;
@@ -167,6 +175,87 @@ public abstract class MyTool implements Runnable {
 
                 out.println("Debugger attached successfully.");
                 this.startInternal();
+                return 0;
+            }
+        } else {
+            this.usage();
+            return 1;
+        }
+    }
+
+    private int start(String[] args, JStackResult jStackResult) throws Exception{
+        if (args.length >= 1 && args.length <= 2) {
+            if (args[0].startsWith("-h")) {
+                return 0;
+            } else if (args[0].startsWith("-")) {
+                return 1;
+            } else {
+                PrintStream err = System.err;
+//                PrintStream out = System.out;
+                StringBuilder errStr = new StringBuilder();
+                int pid = 0;
+                String coreFileName = null;
+                String executableName = null;
+                String remoteServer = null;
+                switch (args.length) {
+                    case 1:
+                        try {
+                            pid = Integer.parseInt(args[0]);
+                            this.debugeeType = 0;
+                        } catch (NumberFormatException var9) {
+                            remoteServer = args[0];
+                            this.debugeeType = 2;
+                        }
+                        break;
+                    case 2:
+                        executableName = args[0];
+                        coreFileName = args[1];
+                        this.debugeeType = 1;
+                        break;
+                    default:
+                        this.usage();
+                        return 1;
+                }
+
+                this.agent = new HotSpotAgent();
+
+                try {
+                    switch (this.debugeeType) {
+                        case 0:
+                            jStackResult.setVmId(pid);
+//                            out.println("Attaching to process ID " + pid + ", please wait...");
+                            this.agent.attach(pid);
+                            break;
+                        case 1:
+//                            out.println("Attaching to core " + coreFileName + " from executable " + executableName + ", please wait...");
+                            this.agent.attach(executableName, coreFileName);
+                            break;
+                        case 2:
+//                            out.println("Attaching to remote server " + remoteServer + ", please wait...");
+                            this.agent.attach(remoteServer);
+                    }
+                } catch (DebuggerException var10) {
+                    switch (this.debugeeType) {
+                        case 0:
+                            errStr.append("Error attaching to process: ");
+                            break;
+                        case 1:
+                            errStr.append("Error attaching to core file: ");
+                            break;
+                        case 2:
+                            errStr.append("Error attaching to remote server: ");
+                    }
+
+                    if (var10.getMessage() != null) {
+                        errStr.append(var10.getMessage());
+                        errStr.append("\n");
+                        throw new Exception(errStr.toString());
+                    }
+
+                    err.println();
+                    return 1;
+                }
+                this.startInternal(jStackResult);
                 return 0;
             }
         } else {
@@ -204,6 +293,28 @@ public abstract class MyTool implements Runnable {
         if (version != null) {
             out.print("JVM version is ");
             out.println(version);
+        }
+
+        this.run();
+    }
+
+    private void startInternal(JStackResult jStackResult) {
+//        PrintStream out = System.out;
+        VM vm = VM.getVM();
+        if (vm.isCore()) {
+//            out.println("Core build detected.");
+        } else if (vm.isClientCompiler()) {
+//            out.println("Client compiler detected.");
+        } else {
+            if (!vm.isServerCompiler()) {
+                throw new RuntimeException("Fatal error: should have been able to detect core/C1/C2 build");
+            }
+//            out.println("Server compiler detected.");
+        }
+
+        String version = vm.getVMRelease();
+        if (version != null) {
+            jStackResult.setVmVersion(version);
         }
 
         this.run();

@@ -1,5 +1,6 @@
 package beifengtz.vmconsole.tools.jstack;
 
+import beifengtz.vmconsole.entity.JStackResult;
 import sun.jvm.hotspot.code.CodeBlob;
 import sun.jvm.hotspot.code.CodeCache;
 import sun.jvm.hotspot.debugger.Address;
@@ -13,9 +14,11 @@ import sun.jvm.hotspot.interpreter.Interpreter;
 import sun.jvm.hotspot.interpreter.InterpreterCodelet;
 import sun.jvm.hotspot.oops.Method;
 import sun.jvm.hotspot.runtime.*;
-import sun.jvm.hotspot.tools.PStack;
 import sun.jvm.hotspot.utilities.PlatformInfo;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.*;
 
@@ -49,7 +52,11 @@ public class PStackTool extends MyTool {
     public void run() {
         this.run(System.out);
     }
-
+    /**
+     * 打印流接收输出结果
+     *
+     * @param out 打印流
+     */
     public void run(PrintStream out) {
         Debugger dbg = this.getAgent().getDebugger();
         this.run(out, dbg);
@@ -176,9 +183,161 @@ public class PStackTool extends MyTool {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        PStackTool t = new PStackTool();
-        t.execute(args);
+    /**
+     * 用JStackResult对象接收
+     * @param jStackResult {@link JStackResult}
+     */
+    public void run(JStackResult jStackResult) throws Exception {
+        Debugger dbg = this.getAgent().getDebugger();
+        this.run(jStackResult,dbg);
+    }
+
+    public void run(JStackResult jStackResult, Debugger dbg) throws Exception{
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
+        PrintStream out = new PrintStream(outputStream);
+
+        if (PlatformInfo.getOS().equals("darwin")) {
+            closeStream(out,outputStream);
+            throw new Exception("Not available on Darwin");
+        } else {
+            CDebugger cdbg = dbg.getCDebugger();
+            if (cdbg != null) {
+                ConcurrentLocksPrinter concLocksPrinter = null;
+                this.initJFrameCache();
+                if (this.concurrentLocks) {
+                    concLocksPrinter = new ConcurrentLocksPrinter();
+                }
+
+                //  打印死锁堆栈信息
+                try {
+                    DeadlockDetector.print(out);
+                    jStackResult.setDeadlocks(out.toString());
+                    //  重用缓存区
+                    outputStream.reset();
+                } catch (Exception var16) {
+                    closeStream(out,outputStream);
+                    throw new Exception("can't print deadlock information: " + var16.getMessage());
+                }
+
+                //  获取线程列表，迭代遍历
+                List l = cdbg.getThreadList();
+                boolean cdbgCanDemangle = cdbg.canDemangle();
+                Iterator itr = l.iterator();
+
+                ArrayList<StringBuilder> jniStack = new ArrayList<>(l.size());
+
+                while(itr.hasNext()) {
+                    ThreadProxy th = (ThreadProxy)itr.next();
+                    StringBuilder tempInfo = new StringBuilder();
+                    try {
+                        CFrame f = cdbg.topFrameForThread(th);
+
+
+                        //  循环遍历并保存信息
+                        for(; f != null; f = f.sender(th)) {
+                            ClosestSymbol sym = f.closestSymbolToPC();
+                            Address pc = f.pc();
+                            tempInfo.append(pc);
+                            tempInfo.append("\t");
+                            if (sym != null) {
+                                String name = sym.getName();
+                                if (cdbgCanDemangle) {
+                                    name = cdbg.demangle(name);
+                                }
+                                tempInfo.append(name);
+                                long diff = sym.getOffset();
+                                if (diff != 0L) {
+                                    tempInfo.append(" + 0x");
+                                    tempInfo.append(Long.toHexString(diff));
+                                }
+                                tempInfo.append("\n");
+                            } else {
+                                String[] names = null;
+                                Interpreter interp = VM.getVM().getInterpreter();
+                                if (interp.contains(pc)) {
+                                    names = this.getJavaNames(th, f.localVariableBase());
+                                    if (names == null || names.length == 0) {
+                                        tempInfo.append("<interpreter> ");
+                                        InterpreterCodelet ic = interp.getCodeletContaining(pc);
+                                        if (ic != null) {
+                                            String desc = ic.getDescription();
+                                            if (desc != null) {
+                                                tempInfo.append(desc);
+                                            }
+                                        }
+                                        tempInfo.append("\n");
+                                    }
+                                } else {
+                                    CodeCache c = VM.getVM().getCodeCache();
+                                    if (c.contains(pc)) {
+                                        CodeBlob cb = c.findBlobUnsafe(pc);
+                                        if (cb.isNMethod()) {
+                                            names = this.getJavaNames(th, f.localVariableBase());
+                                            if (names == null || names.length == 0) {
+                                                tempInfo.append("<Unknown compiled code>");
+                                            }
+                                        } else if (cb.isBufferBlob()) {
+                                            tempInfo.append("<StubRoutines>");
+                                        } else if (cb.isRuntimeStub()) {
+                                            tempInfo.append("<RuntimeStub>");
+                                        } else if (cb.isDeoptimizationStub()) {
+                                            tempInfo.append("<DeoptimizationStub>");
+                                        } else if (cb.isUncommonTrapStub()) {
+                                            tempInfo.append("<UncommonTrap>");
+                                        } else if (cb.isExceptionStub()) {
+                                            tempInfo.append("<ExceptionStub>");
+                                        } else if (cb.isSafepointStub()) {
+                                            tempInfo.append("<SafepointStub>");
+                                        } else {
+                                            tempInfo.append("<Unknown code blob>");
+                                        }
+                                    } else {
+                                        tempInfo.append("\t????????");
+                                    }
+                                }
+
+                                if (names != null && names.length != 0) {
+                                    for(int i = 0; i < names.length; ++i) {
+                                        tempInfo.append(names[i]);
+                                    }
+                                }
+                            }
+                        }
+                        jniStack.add(tempInfo);
+                    } catch (Exception var17) {
+                        var17.printStackTrace();
+                    }
+
+                    //  并发锁
+                    if (this.concurrentLocks) {
+                        JavaThread jthread = (JavaThread)this.proxyToThread.get(th);
+                        if (jthread != null) {
+                            concLocksPrinter.print(jthread, out);
+                            jStackResult.setConcurrentLocks(outputStream.toString());
+                            outputStream.reset();
+                        }
+                    }
+                }
+                jStackResult.setJniStack(jniStack);
+            } else if (this.getDebugeeType() == 2) {
+                closeStream(out,outputStream);
+                throw new Exception("remote configuration is not yet implemented");
+            } else {
+                closeStream(out,outputStream);
+                throw new Exception("not yet implemented (debugger does not support CDebugger!");
+            }
+        }
+    }
+
+    /**
+     * 关闭相应流
+     * @param ps {@link PrintStream}
+     * @param o {@link OutputStream}
+     * @throws IOException
+     */
+    private void closeStream(PrintStream ps, OutputStream o) throws IOException {
+        ps.close();
+        o.close();
     }
 
     private void initJFrameCache() {

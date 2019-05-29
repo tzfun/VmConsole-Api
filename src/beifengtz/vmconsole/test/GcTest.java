@@ -1,5 +1,7 @@
 package beifengtz.vmconsole.test;
 
+import java.util.Arrays;
+
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
@@ -8,6 +10,11 @@ package beifengtz.vmconsole.test;
  */
 public class GcTest {
     public static void main(String[] args) throws InterruptedException{
-        System.out.println(System.getProperty("sun.jvmstat.monitor.MonitoredHost"));
+        String str = "hello\nworld\nhhhh\n32";
+        String[] strs = str.split("\\n");
+        String threadId = strs[strs.length-1];
+
+        System.out.println(str.substring(0,str.length()-threadId.length()-1));
+        System.out.println(threadId);
     }
 }
