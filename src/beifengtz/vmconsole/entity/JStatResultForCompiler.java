@@ -1,6 +1,5 @@
 package beifengtz.vmconsole.entity;
 
-import java.util.Arrays;
 
 /**
  * @author beifengtz

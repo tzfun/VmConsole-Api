@@ -16,6 +16,17 @@ import java.util.ArrayList;
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
  * <p>location: beifengtz.vmconsole.javase_learning</p>
  * Created in 12:20 2019/5/27
+ *
+ * jps命令介绍：
+ *
+ * 用来查看基于HotSpot的JVM里面中，所有具有访问权限的Java进程的具体状态,
+ *  包括进程ID，进程启动的路径及启动参数等等，与unix上的ps类似，只不过jps
+ * 是用来显示java进程，可以把jps理解为ps的一个子集。
+ *
+ * 使用jps时，如果没有指定hostid，它只会显示本地环境中所有的Java进程；
+ * 如果指定了hostid，它就会显示指定hostid上面的java进程，不过这需要远程服
+ * 务上开启了jstatd服务，可使用JStatCmd相关API。
+ *
  */
 public class JpsCmd {
     private static Arguments arguments;

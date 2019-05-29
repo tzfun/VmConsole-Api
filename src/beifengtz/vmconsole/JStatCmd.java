@@ -18,6 +18,21 @@ import java.util.List;
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
  * <p>location: beifengtz.vmconsole.javase_learning</p>
  * Created in 16:41 2019/5/27
+ *
+ * jstat命令介绍：
+ *
+ * Jstat用于监控基于HotSpot的JVM，对其堆的使用情况进行实时的命令行的统计，
+ * 使用jstat我们可以对指定的JVM做如下监控：
+ *
+ * - 类的加载及卸载情况
+ * - 查看新生代、老生代及持久代的容量及使用情况
+ * - 查看新生代、老生代及持久代的垃圾收集情况，包括垃圾回收的次数及垃圾回收所占用的时间
+ * - 查看新生代中Eden区及Survior区中容量及分配情况等
+ *
+ * jstat工具特别强大，它有众多的可选项，通过提供多种不同的监控维度，使我们
+ * 可以从不同的维度来了解到当前JVM堆的使用情况。详细查看堆内各个部分的使用量，
+ * 使用的时候必须加上待统计的Java进程号，可选的不同维度参数以及可选的统计频率参数。
+ *
  */
 public class JStatCmd {
     private static Arguments arguments;
