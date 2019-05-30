@@ -1,4 +1,4 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstat;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -6,10 +6,13 @@ import java.util.Objects;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.entity.jstat</p>
  * Created in 16:32 2019/5/27
+ *
+ * <p>JStatResult实体类</p>
+ * <p>用于封装jstat命令的结果，通用结果集，所有jstat实体类的父类</p>
  */
-public class JStatResult implements JStatTransferable {
+public class JStatResult {
 
     //  虚拟机唯一识别id
     private Integer vmId;

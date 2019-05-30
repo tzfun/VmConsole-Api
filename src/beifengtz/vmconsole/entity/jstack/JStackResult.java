@@ -1,4 +1,4 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,11 @@ import java.util.List;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.VmConsole-Api</p>
+ * <p>location: beifengtz.vmconsole.entity.jstack</p>
  * Created in 21:45 2019/5/29
+ *
+ * <p>JStackResult实体类</p>
+ * <p>用于封装jstack命令返回的结果集</p>
  */
 public class JStackResult {
     private int vmId;

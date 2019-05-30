@@ -1,12 +1,15 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstat;
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.entity.jstat</p>
  * Created in 20:03 2019/5/27
+ *
+ * <p>JStatResultForCompilation实体类</p>
+ * <p>用于封装jstat -printcompilation命令的结果</p>
  */
-public class JStatResultForCompilation extends JStatResult implements JStatTransferable {
+public class JStatResultForCompilation extends JStatResult {
     //Compiled：最近编译方法的数量
     private int compiled;
     //Size：最近编译方法的字节码数量

@@ -1,9 +1,7 @@
 package beifengtz.vmconsole.test;
 
-import beifengtz.vmconsole.entity.JStackResult;
+import beifengtz.vmconsole.entity.jstack.JStackResult;
 import beifengtz.vmconsole.tools.jstack.JStackTool;
-
-import java.util.Arrays;
 
 /**
  * @author beifengtz
@@ -11,7 +9,7 @@ import java.util.Arrays;
  * <p>location: beifengtz.javase_learning</p>
  * Created in 19:38 2019/5/23
  */
-public class GcTest {
+public class Test {
     public static void main(String[] args) throws InterruptedException,Exception{
 
         JStackResult jStackResult = new JStackResult();

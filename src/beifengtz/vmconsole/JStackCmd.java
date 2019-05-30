@@ -1,6 +1,6 @@
 package beifengtz.vmconsole;
 
-import beifengtz.vmconsole.entity.JStackResult;
+import beifengtz.vmconsole.entity.jstack.JStackResult;
 import beifengtz.vmconsole.tools.jstack.JStackTool;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
@@ -13,20 +13,20 @@ import java.io.InputStream;
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
  * <p>location: beifengtz.vmconsole.VmConsole-Api</p>
  * Created in 19:50 2019/5/28
- * <p>
- * jstack命令介绍：
+ *
+ * <p>jstack命令介绍：</p>
+ *
  * <p>
  * jstack用于打印出给定的java进程ID或core file或远程调试服务的Java
  * 堆栈信息，如果是在64位机器上，需要指定选项"-J-d64"，Windows的jstack
- * 使用方式只支持以下的这种方式：
- * <p>
- * jstack [-l] pid
+ * 使用方式只支持以下的这种方式：<code>jstack [-l] pid<code></p>
+ *
  * <p>
  * 如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack
  * 和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何
  * 处发生问题。另外，jstack工具还可以附属到正在运行的java程序中，看到当时
  * 运行的java程序的java stack和native stack的信息, 如果现在运行的java
- * 程序呈现hung的状态，jstack是非常有用的。
+ * 程序呈现hung的状态，jstack是非常有用的。</p>
  */
 public class JStackCmd {
     public static void main(String[] args) throws Exception {

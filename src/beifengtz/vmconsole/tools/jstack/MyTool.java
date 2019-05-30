@@ -2,7 +2,7 @@ package beifengtz.vmconsole.tools.jstack;
 
 import java.io.PrintStream;
 
-import beifengtz.vmconsole.entity.JStackResult;
+import beifengtz.vmconsole.entity.jstack.JStackResult;
 import sun.jvm.hotspot.HotSpotAgent;
 import sun.jvm.hotspot.debugger.DebuggerException;
 import sun.jvm.hotspot.debugger.JVMDebugger;
@@ -11,8 +11,10 @@ import sun.jvm.hotspot.runtime.VM;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.tools.jstack.VmConsole-Api</p>
+ * <p>location: beifengtz.vmconsole.tools.jstack</p>
  * Created in 23:24 2019/5/28
+ *
+ * <p>虚拟机注册工具类，用于注册虚拟机信息、调试环境、获取虚拟机版本等</p>
  */
 public abstract class MyTool implements Runnable {
     private HotSpotAgent agent;

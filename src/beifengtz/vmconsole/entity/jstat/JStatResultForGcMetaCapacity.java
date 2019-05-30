@@ -1,12 +1,15 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstat;
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.entity.jstat</p>
  * Created in 19:57 2019/5/27
+ *
+ * <p>JStatResultForGcMetaCapacity实体类</p>
+ * <p>用于封装jstat -gcmetacapacity命令的结果</p>
  */
-public class JStatResultForGcMetaCapacity extends JStatResult implements JStatTransferable {
+public class JStatResultForGcMetaCapacity extends JStatResult {
     //MCMN:最小元数据容量
     private double mcmn;
     //MCMX：最大元数据容量

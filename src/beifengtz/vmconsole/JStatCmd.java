@@ -1,7 +1,7 @@
 package beifengtz.vmconsole;
 
-import beifengtz.vmconsole.entity.*;
-import beifengtz.vmconsole.util.JStatUtil;
+import beifengtz.vmconsole.entity.jstat.*;
+import beifengtz.vmconsole.tools.jstat.JStatTool;
 import sun.jvmstat.monitor.*;
 import sun.jvmstat.monitor.event.HostEvent;
 import sun.jvmstat.monitor.event.HostListener;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.javase_learning</p>
+ * <p>location: beifengtz.vmconsole</p>
  * Created in 16:41 2019/5/27
  *
  * jstat命令介绍：
@@ -37,26 +37,12 @@ import java.util.List;
 public class JStatCmd {
     private static Arguments arguments;
 
-    public static void main(String[] args) {
-        System.out.println(list());
-        System.out.println(snap(8208));
-        System.out.println(clazz(8208));
-        System.out.println(gc(8208));
-        System.out.println(gcNew(8208));
-        System.out.println(gcOld(8208));
-        System.out.println(gcNewCapacity(8208));
-        System.out.println(gcOldCapacity(8208));
-        System.out.println(gcMetaCapacity(8208));
-        System.out.println(compiler(8208));
-        System.out.println(printCompilation(8208));
-    }
-
     /**
-     * 封装jstat -list命令
+     * <p>封装<code>jstat -list</code>命令</p>
      *
      * @return JStatResult
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResult list() throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-list"});
@@ -72,8 +58,8 @@ public class JStatCmd {
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResult
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResult snap(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-snap", String.valueOf(vmId)});
@@ -85,12 +71,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -class [vmid]命令
+     * <p>封装<code>jstat -class [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForClass
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForClass clazz(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-class", String.valueOf(vmId)});
@@ -107,14 +93,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -class [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -class [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForClass>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForClass> clazz(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -139,12 +125,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gc [vmid]命令
+     * <p>封装<code>jstat -gc [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGc
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGc gc(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gc", String.valueOf(vmId)});
@@ -161,14 +147,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gc [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gc [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGc>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGc> gc(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -193,12 +179,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -compiler [vmid]命令
+     * <p>封装<code>jstat -compiler [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForCompiler
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForCompiler compiler(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-compiler", String.valueOf(vmId)});
@@ -215,14 +201,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -compiler [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -compiler [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForCompiler>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForCompiler> compiler(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -247,12 +233,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gccapacity [vmid]命令
+     * <p>封装<code>jstat -gccapacity [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGcCapacity
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGcCapacity gcCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gccapacity", String.valueOf(vmId)});
@@ -269,14 +255,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gccapacity [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gccapacity [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGcCapacity>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGcCapacity> gcCapacity(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -301,12 +287,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcnew [vmid]命令
+     * <p>封装<code>jstat -gcnew [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGcNew
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGcNew gcNew(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gcnew", String.valueOf(vmId)});
@@ -323,14 +309,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcnew [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gcnew [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGcNew>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGcNew> gcNew(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -355,12 +341,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcnewcapacity [vmid]命令
+     * <p>封装<code>jstat -gcnewcapacity [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGcNewCapacity
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGcNewCapacity gcNewCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gcnewcapacity", String.valueOf(vmId)});
@@ -377,14 +363,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcnewcapacity [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gcnewcapacity [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGcNewCapacity>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGcNewCapacity> gcNewCapacity(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -409,12 +395,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcold [vmid]命令
+     * <p>封装<code>jstat -gcold [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGcOld
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGcOld gcOld(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gcold", String.valueOf(vmId)});
@@ -431,14 +417,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcold [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gcold [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGcOld>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGcOld> gcOld(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -463,12 +449,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcoldcapacity [vmid]命令
+     * <p>封装<code>jstat -gcoldcapacity [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGcOldCapacity
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGcOldCapacity gcOldCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gcoldcapacity", String.valueOf(vmId)});
@@ -485,14 +471,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcoldcapacity [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gcoldcapacity [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGcOldCapacity>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGcOldCapacity> gcOldCapacitiy(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -517,12 +503,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcmetacapacity [vmid]命令
+     * <p>封装<code>jstat -gcmetacapacity [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGcMetaCapacity
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGcMetaCapacity gcMetaCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gcmetacapacity", String.valueOf(vmId)});
@@ -539,14 +525,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcmetacapacity [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gcmetacapacity [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGcMetaCapacity>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGcMetaCapacity> gcMetaCapacitiy(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -571,12 +557,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcutil [vmid]命令
+     * <p>封装<code>jstat -gcutil [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForGcUtil
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForGcUtil gcUtil(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-gcutil", String.valueOf(vmId)});
@@ -593,14 +579,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -gcutil [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -gcutil [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForGcMetaCapacity>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForGcUtil> gcUtil(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -625,12 +611,12 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -printcompilation [vmid]命令
+     * <p>封装<code>jstat -printcompilation [vmid]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @return JStatResultForCompilation
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static JStatResultForCompilation printCompilation(int vmId) throws IllegalArgumentException, NullPointerException {
         ArrayList<JStatResult> r = run(new String[]{"-printcompilation", String.valueOf(vmId)});
@@ -647,14 +633,14 @@ public class JStatCmd {
     }
 
     /**
-     * 封装jstat -printcompilation [vmid] [interval] [count]命令
+     * <p>封装<code>jstat -printcompilation [vmid] [interval] [count]</code>命令</p>
      *
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
      * @return ArrayList<JStatResultForCompilation>
-     * @throws IllegalArgumentException
-     * @throws NullPointerException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws NullPointerException 空指针异常
      */
     public static ArrayList<JStatResultForCompilation> printCompilation(int vmId, long interval, int count)
             throws IllegalArgumentException, NullPointerException {
@@ -679,11 +665,11 @@ public class JStatCmd {
     }
 
     /**
-     * jstat命令执行函数
+     * <p>jstat命令执行函数</p>
      *
      * @param var0 命令参数
      * @return ArrayList<JStatResult> {@link JStatResult}的集合
-     * @throws {@link IllegalArgumentException}
+     * @throws IllegalArgumentException 参数非法异常
      */
     public static ArrayList<JStatResult> run(String[] var0) throws IllegalArgumentException {
         //  转义jStat命令参数
@@ -732,13 +718,12 @@ public class JStatCmd {
     }
 
     /**
-     * 有返回结果的获取虚拟机状态信息，
-     * 将所有信息存入{@link JStatResult}的集合
+     * <p>有返回结果的获取虚拟机状态信息，将所有信息存入{@link JStatResult}的集合</p>
      * <p>
-     * 集合中只有<strong>一个</strong>JStatResult对象
+     * <p>集合中只有<strong>一个</strong>JStatResult对象</p>
      *
      * @return ArrayList<JStatResult> {@link JStatResult}的集合
-     * @throws {@link MonitorException}
+     * @throws MonitorException 监控异常
      */
     static ArrayList<JStatResult> names() throws MonitorException {
         VmIdentifier var0 = arguments.vmId();
@@ -750,7 +735,7 @@ public class JStatCmd {
         } catch (MonitorException e) {
             e.printStackTrace();
         }
-        JStatUtil var4 = new JStatUtil(var3);
+        JStatTool var4 = new JStatTool(var3);
 
         //  仅返回一个结果列表
         ArrayList<JStatResult> resList = new ArrayList<>(1);
@@ -769,20 +754,19 @@ public class JStatCmd {
     }
 
     /**
-     * 有返回结果的获取虚拟机状态和相应值信息，
-     * 将所有信息和值存入{@link JStatResult}的集合
+     * <p>有返回结果的获取虚拟机状态和相应值信息，将所有信息和值存入{@link JStatResult}的集合</p>
      * <p>
-     * 集合中只有<strong>一个</strong>JStatResult对象
+     * <p>集合中只有<strong>一个</strong>JStatResult对象</p>
      *
      * @return ArrayList<JStatResult> {@link JStatResult}的集合
-     * @throws {@link MonitorException}
+     * @throws MonitorException 监控异常
      */
     static ArrayList<JStatResult> snapShot() throws MonitorException {
         VmIdentifier var0 = arguments.vmId();
         int var1 = arguments.sampleInterval();
         MonitoredHost var2 = MonitoredHost.getMonitoredHost(var0);
         MonitoredVm var3 = var2.getMonitoredVm(var0, var1);
-        JStatUtil var4 = new JStatUtil(var3);
+        JStatTool var4 = new JStatTool(var3);
 
         //  仅返回一个结果列表
         ArrayList<JStatResult> resList = new ArrayList<>(1);
@@ -802,26 +786,27 @@ public class JStatCmd {
     }
 
     /**
-     * 有返回结果的获取虚拟机信息，返回的实际对象根据命令类型进行不同的封装，
-     * 但是返回的集合全部由其父类{@link JStatResult}代替，如果要获取相应对象需要进行向下转型
+     * <p>有返回结果的获取虚拟机信息，返回的实际对象根据命令类型进行不同的封装，
+     * 但是返回的集合全部由其父类{@link JStatResult}代替，如果要获取相应对象需要进行向下转型</p>
      * <p>
-     * -class: {@link JStatResultForClass}
-     * -gc: {@link JStatResultForGc}
-     * -compiler: {@link JStatResultForCompiler}
-     * -compilation: {@link JStatResultForCompilation}
-     * -gccapacity: {@link JStatResultForGcCapacity}
-     * -gcmetacapacity: {@link JStatResultForGcMetaCapacity}
-     * -gcnew: {@link JStatResultForGcNew}
-     * -gcnewcapacity: {@link JStatResultForGcNewCapacity}
-     * -gcold: {@link JStatResultForGcOld}
-     * -gcoldcapacity: {@link JStatResultForGcOldCapacity}
-     * -gcutil: {@link JStatResultForGcUtil}
+     * <p>-class: {@link JStatResultForClass}</p>
+     * <p>-gc: {@link JStatResultForGc}</p>
+     * <p>-compiler: {@link JStatResultForCompiler}</p>
+     * <p>-compilation: {@link JStatResultForCompilation}</p>
+     * <p>-gccapacity: {@link JStatResultForGcCapacity}</p>
+     * <p>-gcmetacapacity: {@link JStatResultForGcMetaCapacity}</p>
+     * <p>-gcnew: {@link JStatResultForGcNew}</p>
+     * <p>-gcnewcapacity: {@link JStatResultForGcNewCapacity}</p>
+     * <p>-gcold: {@link JStatResultForGcOld}</p>
+     * <p>-gcoldcapacity: {@link JStatResultForGcOldCapacity}</p>
+     * <p>-gcutil: {@link JStatResultForGcUtil}</p>
      * <p>
-     * 集合中{@link JStatResult}对象的个数根据命令参数count决定，
-     * 如果没有传入count命令，则默认返回集合的容量为一
+     *
+     * <p>集合中{@link JStatResult}对象的个数根据命令参数count决定，
+     * 如果没有传入count命令，则默认返回集合的容量为一</p>
      *
      * @return ArrayList<JStatResult> {@link JStatResult}的集合
-     * @throws {@link MonitorException}
+     * @throws MonitorException 监控异常
      */
     static ArrayList<JStatResult> samples() throws MonitorException {
         //  获取虚拟机认证码
@@ -834,7 +819,7 @@ public class JStatCmd {
         MonitoredVm var3 = var2.getMonitoredVm(var0, var1);
 
         //  jStat工具
-        final JStatUtil var4 = new JStatUtil(var3);
+        final JStatTool var4 = new JStatTool(var3);
 
         Object var5 = null;
 

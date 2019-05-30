@@ -1,6 +1,6 @@
 package beifengtz.vmconsole;
 
-import beifengtz.vmconsole.entity.JpsResult;
+import beifengtz.vmconsole.entity.jps.JpsResult;
 import sun.jvmstat.monitor.*;
 import sun.tools.jps.Arguments;
 
@@ -32,7 +32,55 @@ public class JpsCmd {
     private static Arguments arguments;
 
     /**
-     * jps命令函数
+     * <p>封装命令：<code>jps -q</code></p>
+     * <p>仅获取虚拟机的vmId</p>
+     *
+     * @return JpsResult的集合
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws MonitorException 监控异常
+     */
+    public static List<JpsResult> quit() throws IllegalArgumentException, MonitorException{
+        return run(new String[]{"-q"});
+    }
+
+    /**
+     * <p>封装命令：<code>jps -m</code></p>
+     * <p>获取虚拟机的vmId和main函数的参数</p>
+     *
+     * @return JpsResult的集合
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws MonitorException 监控异常
+     */
+    public static List<JpsResult> withMainClassArgs() throws IllegalArgumentException, MonitorException{
+        return run(new String[]{"-m"});
+    }
+
+    /**
+     * <p>封装命令：<code>jps -l</code></p>
+     * <p>获取虚拟机的vmId和主类或Jar的全名</p>
+     *
+     * @return JpsResult的集合
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws MonitorException 监控异常
+     */
+    public static List<JpsResult> withFullName() throws IllegalArgumentException, MonitorException{
+        return run(new String[]{"-l"});
+    }
+
+    /**
+     * <p>封装命令：<code>jps -v</code></p>
+     * <p>获取虚拟机的vmId和虚拟机参数</p>
+     *
+     * @return JpsResult的集合
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws MonitorException 监控异常
+     */
+    public static List<JpsResult> withVmArgs() throws IllegalArgumentException, MonitorException{
+        return run(new String[]{"-v"});
+    }
+
+    /**
+     * jps命令执行函数
      *
      * @param var0 String类型，传入jps命令的参数：
      *      <p>-q 输出虚拟机唯一ID，不输出类名、Jar名和传入main方法的参数</p>
@@ -43,8 +91,8 @@ public class JpsCmd {
      *
      * @return List<JpsResult> {@link JpsResult}对象
      *
-     * @throws IllegalArgumentException
-     * @throws MonitorException
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws MonitorException 监控异常
      */
     public static List<JpsResult> run(String[] var0) throws IllegalArgumentException, MonitorException {
 

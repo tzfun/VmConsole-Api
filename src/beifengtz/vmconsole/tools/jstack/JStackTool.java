@@ -1,16 +1,21 @@
 package beifengtz.vmconsole.tools.jstack;
 
-import beifengtz.vmconsole.entity.JStackResult;
+import beifengtz.vmconsole.entity.jstack.JStackResult;
+import beifengtz.vmconsole.exception.*;
+import sun.jvm.hotspot.debugger.AddressException;
 import sun.jvm.hotspot.debugger.JVMDebugger;
 
+import java.io.IOException;
 import java.io.PrintStream;
 
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.tools.jstack.VmConsole-Api</p>
+ * <p>location: beifengtz.vmconsole.tools.jstack</p>
  * Created in 22:34 2019/5/28
+ *
+ * <p>jstack命令工具封装，其中包含模拟命令执行体、参数解析、逻辑判断等</p>
  */
 public class JStackTool extends MyTool {
     private boolean mixedMode;
@@ -65,8 +70,15 @@ public class JStackTool extends MyTool {
                         ((PStackTool) tool).run(ps);
                     else
                         ((PStackTool) tool).run(jStackResult);
-
-                }catch (Exception e){
+                }catch (NotAvailableException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }catch (UnKnowException e){
+                    e.printStackTrace();
+                }catch (ConfigurationException e){
+                    e.printStackTrace();
+                }catch (NotImplementedException e){
                     e.printStackTrace();
                 }
             } else {
@@ -77,8 +89,11 @@ public class JStackTool extends MyTool {
                         ((StackTraceTool) tool).run(ps);
                     else
                         ((StackTraceTool) tool).run(jStackResult);
-
-                }catch (Exception e){
+                }catch (IOException e){
+                    e.printStackTrace();
+                }catch (UnKnowException e){
+                    e.printStackTrace();
+                }catch (AddressException e){
                     e.printStackTrace();
                 }
 
@@ -86,7 +101,7 @@ public class JStackTool extends MyTool {
         }else {
             try {
                 throwInitException();
-            }catch (Exception e){
+            }catch (UnInitException e){
                 e.printStackTrace();
             }
 
@@ -94,15 +109,16 @@ public class JStackTool extends MyTool {
     }
 
     /**
-     * 抛出未初始化异常
-     * @throws Exception
+     * <p>抛出未初始化异常类</p>
+     *
+     * @throws {@link UnInitException}
      */
-    public static void throwInitException() throws Exception{
-        throw new Exception("JStackTool have not initialized. The caller should call the init method first.");
+    public static void throwInitException() throws UnInitException{
+        throw new UnInitException("JStackTool have not initialized. The caller should call the init method first.");
     }
 
     /**
-     * 设置Tool对象的默认参数
+     * <p>设置Tool对象的默认参数</p>
      *
      * @param tool {@link MyTool}
      */
@@ -112,9 +128,9 @@ public class JStackTool extends MyTool {
     }
 
     /**
-     * 初始化方法，用于jstack调用，实例化对象并检测命令参数
+     * <p>初始化方法，在使用{@link JStackTool}实例方法的时候必须调用init方法</p>
      *
-     * 默认将输出打印到控制台
+     * <p>默认将输出打印到控制台，即System.out</p>
      *
      * @param args 命令参数
      */
@@ -123,9 +139,10 @@ public class JStackTool extends MyTool {
     }
 
     /**
-     * 初始化方法，用于jStack调用，实例化对象并检测命令参数
+     * <p>初始化方法，在使用{@link JStackTool}实例方法的时候必须调用init方法</p>
      *
-     * 传入{@link JStackResult}对象接收数据
+     * <p>传入命令参数和{@link JStackResult}结果集对象，其中命令参数用于
+     * 解析命令参数，结果集对象用于接收并封装数据</p>
      *
      * @param args 命令参数
      * @param jStackResult   jStack结果集对象
@@ -138,12 +155,13 @@ public class JStackTool extends MyTool {
     }
 
     /**
-     * 初始化方法，用于jStack调用，实例化对象并检测命令参数
+     * <p>初始化方法，在使用{@link JStackTool}实例方法的时候必须调用init方法</p>
      *
-     * 传入{@link PrintStream}打印流接收数据
+     * <p>传入命令参数和{@link PrintStream}打印流，其中命令参数用于
+     * 解析命令参数，打印流用于接收数据</p>
      *
      * @param args 命令参数
-     * @param ps 输出流
+     * @param ps 输出流，命令结果将直接输入到其中
      */
     public static void init(String[] args, PrintStream ps) {
         hasInit = false;
@@ -153,10 +171,10 @@ public class JStackTool extends MyTool {
     }
 
     /**
-     * jStack参数解析
+     * <p>jStack命令参数解析，解析成功之后只剩下vmId，其他-m、-l等参数转换为boolean型的标志数据</p>
      *
      * @param args 命令参数
-     * @return 数组对象
+     * @return ToolArg数组对象
      */
     public static ToolArg initDoFirst(String[] args) {
         boolean mixedMode = false;
@@ -186,7 +204,7 @@ public class JStackTool extends MyTool {
     }
 
     /**
-     * Tool对象的参数及标志位封装类
+     * <p>Tool对象的参数及标志位封装类，用于封装解析后的参数及标志字段</p>
      */
     static class ToolArg{
         boolean mixedMode;

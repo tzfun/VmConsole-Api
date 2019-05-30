@@ -1,18 +1,18 @@
-package beifengtz.vmconsole.util;
+package beifengtz.vmconsole.tools.jstat;
 
-import beifengtz.vmconsole.entity.*;
+import beifengtz.vmconsole.entity.jstat.*;
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.util.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.tools.jstat</p>
  * Created in 18:07 2019/5/27
  *
- * JStat命令结果集生产工厂类，根据传入的参数类型返回对应的结果集。
+ * <p>jstat结果集生产工具类，根据传入的参数类型返回对应的结果集。</p>
  */
-public class JStatResultFactory {
+public class JStatResultTool {
 
-    public static JStatResult getJStatResult(String arg,String result) throws IllegalArgumentException{
+    public static JStatResult getJStatResult(String arg, String result) throws IllegalArgumentException{
         switch (arg.toLowerCase()){
             case "class":
                 return new JStatResultForClass(result);

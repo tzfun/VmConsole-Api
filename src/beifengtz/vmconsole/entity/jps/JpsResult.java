@@ -1,4 +1,4 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jps;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -6,11 +6,10 @@ import java.util.Objects;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.entity.jps</p>
  * Created in 13:26 2019/5/27
  *
- *
- *
+ * <p>JpsResult实体类</p>
  * <p>用于封装jps命令返回的结果集，将各个结果参数分离出来</p>
  */
 public class JpsResult {

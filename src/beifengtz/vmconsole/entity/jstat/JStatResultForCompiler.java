@@ -1,13 +1,16 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstat;
 
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.entity.jstat</p>
  * Created in 19:22 2019/5/27
+ *
+ * <p>JStatResultForCompiler实体类</p>
+ * <p>用于封装jstat -compiler命令的结果</p>
  */
-public class JStatResultForCompiler extends JStatResult implements JStatTransferable {
+public class JStatResultForCompiler extends JStatResult{
     //Compiled：编译数量。
     private int compiled;
     //Failed：失败数量

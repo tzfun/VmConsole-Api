@@ -1,12 +1,15 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstat;
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.entity.jstat</p>
  * Created in 19:54 2019/5/27
+ *
+ * <p>JStatResultForGcOldCapacity实体类</p>
+ * <p>用于封装jstat -gcoldcapacity命令的结果</p>
  */
-public class JStatResultForGcOldCapacity extends JStatResult implements JStatTransferable {
+public class JStatResultForGcOldCapacity extends JStatResult {
     //OGCMN：老年代最小容量
     private double ogcmn;
     //OGCMX：老年代最大容量

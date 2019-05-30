@@ -1,7 +1,8 @@
 package beifengtz.vmconsole.tools.jstack;
 
-import beifengtz.vmconsole.entity.JStackResult;
-import beifengtz.vmconsole.entity.ThreadStack;
+import beifengtz.vmconsole.entity.jstack.JStackResult;
+import beifengtz.vmconsole.entity.jstack.ThreadStack;
+import beifengtz.vmconsole.exception.UnKnowException;
 import sun.jvm.hotspot.debugger.Address;
 import sun.jvm.hotspot.debugger.AddressException;
 import sun.jvm.hotspot.debugger.JVMDebugger;
@@ -17,8 +18,12 @@ import java.util.LinkedList;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.tools.jstack.VmConsole-Api</p>
+ * <p>location: beifengtz.vmconsole.tools.jstack</p>
  * Created in 22:51 2019/5/28
+ *
+ * <p>线程堆栈处理工具类，<strong>jstack -F</strong>命令最终会在这里执行，
+ * 在运行该类run()方法时必须先在其父类{@link MyTool}中注册虚拟机vmId，否则会报错
+ * </p>
  */
 public class StackTraceTool extends MyTool {
 
@@ -51,7 +56,7 @@ public class StackTraceTool extends MyTool {
     /**
      * 打印流输出结果
      *
-     * @param tty {@link PrintStream}
+     * @param tty {@link PrintStream}打印流
      */
     public void run(PrintStream tty) {
         try {
@@ -140,11 +145,14 @@ public class StackTraceTool extends MyTool {
     }
 
     /**
-     * jStackResult对象接收结果，对结果进行封装
+     * <p>jStackResult对象接收结果，对结果进行封装</p>
      *
-     * @param jStackResult {@link JStackResult}
+     * @param jStackResult {@link JStackResult}对象
+     * @throws IOException 流操作失败时抛出此异常
+     * @throws UnKnowException 未知异常
+     * @throws AddressException 地址错误异常
      */
-    public void run(JStackResult jStackResult) throws Exception{
+    public void run(JStackResult jStackResult) throws IOException,UnKnowException,AddressException{
         //  内存流（针对程序是输出，针对内存是输入）
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
 
@@ -156,8 +164,7 @@ public class StackTraceTool extends MyTool {
         } catch (Exception var11) {
             jStackResult.setDeadlocks("ERROR! Can't print deadlocks:" + var11.getMessage());
             closeStream(tty,outputStream);
-            throw var11;
-
+            throw new UnKnowException(var11.getMessage());
         }
 
         try {
@@ -272,9 +279,10 @@ public class StackTraceTool extends MyTool {
     }
     /**
      * 关闭相应流
+     *
      * @param ps {@link PrintStream}
      * @param o {@link OutputStream}
-     * @throws IOException
+     * @throws IOException 关闭流操作失败时抛出
      */
     private void closeStream(PrintStream ps, OutputStream o) throws IOException {
         ps.close();

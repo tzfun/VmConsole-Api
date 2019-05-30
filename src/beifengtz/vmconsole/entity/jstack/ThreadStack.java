@@ -1,10 +1,14 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstack;
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.VmConsole-Api</p>
+ * <p>location: beifengtz.vmconsole.entity.jstack</p>
  * Created in 21:48 2019/5/29
+ *
+ *
+ * <p>ThreadStack实体类</p>
+ * <p>用于封装线程堆栈信息</p>
  */
 public class ThreadStack {
     private String id;

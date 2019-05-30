@@ -1,12 +1,15 @@
-package beifengtz.vmconsole.entity;
+package beifengtz.vmconsole.entity.jstat;
 
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.entity.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.entity.jstat</p>
  * Created in 19:43 2019/5/27
+ *
+ * <p>JStatResultForGcNew实体类</p>
+ * <p>用于封装jstat -gcnew命令的结果</p>
  */
-public class JStatResultForGcNew extends JStatResult implements JStatTransferable {
+public class JStatResultForGcNew extends JStatResult {
     //S0C：第一个幸存区大小
     private double s0c;
     //S1C：第二个幸存区的大小

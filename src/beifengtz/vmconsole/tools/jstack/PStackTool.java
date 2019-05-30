@@ -1,6 +1,10 @@
 package beifengtz.vmconsole.tools.jstack;
 
-import beifengtz.vmconsole.entity.JStackResult;
+import beifengtz.vmconsole.entity.jstack.JStackResult;
+import beifengtz.vmconsole.exception.ConfigurationException;
+import beifengtz.vmconsole.exception.NotAvailableException;
+import beifengtz.vmconsole.exception.NotImplementedException;
+import beifengtz.vmconsole.exception.UnKnowException;
 import sun.jvm.hotspot.code.CodeBlob;
 import sun.jvm.hotspot.code.CodeCache;
 import sun.jvm.hotspot.debugger.Address;
@@ -25,8 +29,12 @@ import java.util.*;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.tools.VmConsole-Api</p>
+ * <p>location: beifengtz.vmconsole.tools.jstack</p>
  * Created in 22:31 2019/5/28
+ *
+ * <p>Java及本地方法栈处理工具类，<strong>jstack -m</strong>命令最终会在这里执行，
+ * 在运行该类run()方法时必须先在其父类{@link MyTool}中注册虚拟机vmId，否则会报错
+ * </p>
  */
 public class PStackTool extends MyTool {
 
@@ -53,15 +61,22 @@ public class PStackTool extends MyTool {
         this.run(System.out);
     }
     /**
-     * 打印流接收输出结果
+     * <p>线程运行函数体，执行主方法体</p>
      *
-     * @param out 打印流
+     * @param out {@link PrintStream}打印流
      */
     public void run(PrintStream out) {
         Debugger dbg = this.getAgent().getDebugger();
         this.run(out, dbg);
     }
 
+    /**
+     * <p>线程运行函数体，执行主方法体</p>
+     *
+     *
+     * @param out {@link PrintStream}打印流
+     * @param dbg {@link Debugger}调试对象
+     */
     public void run(PrintStream out, Debugger dbg) {
         if (PlatformInfo.getOS().equals("darwin")) {
             out.println("Not available on Darwin");
@@ -184,21 +199,42 @@ public class PStackTool extends MyTool {
     }
 
     /**
-     * 用JStackResult对象接收
-     * @param jStackResult {@link JStackResult}
+     * <p>线程运行函数体，执行主方法体，用JStackResult对象接收及封装数据</p>
+     *
+     * @param jStackResult {@link JStackResult}对象实体
+     * @throws NotAvailableException 无法获取信息异常，操作系统限制会抛出此异常
+     * @throws IOException 输入输出异常，流操作失败时会抛出此异常
+     * @throws UnKnowException 未知异常
+     * @throws ConfigurationException 配置信息错误异常
+     * @throws NotImplementedException 功能未实现异常
      */
-    public void run(JStackResult jStackResult) throws Exception {
+    public void run(JStackResult jStackResult)
+            throws NotAvailableException,IOException,
+            UnKnowException,ConfigurationException,NotImplementedException{
         Debugger dbg = this.getAgent().getDebugger();
         this.run(jStackResult,dbg);
     }
 
-    public void run(JStackResult jStackResult, Debugger dbg) throws Exception{
+    /**
+     * <p>线程运行函数体，执行主方法体，用JStackResult对象接收及封装数据</p>
+     *
+     * @param jStackResult {@link JStackResult}对象实体
+     * @param dbg {@link Debugger}调试对象
+     * @throws NotAvailableException 无法获取信息异常，操作系统限制会抛出此异常
+     * @throws IOException 输入输出异常，流操作失败时会抛出此异常
+     * @throws UnKnowException 未知异常
+     * @throws ConfigurationException 配置信息错误异常
+     * @throws NotImplementedException 功能未实现异常
+     */
+    public void run(JStackResult jStackResult, Debugger dbg)
+            throws NotAvailableException,IOException,
+            UnKnowException,ConfigurationException,NotImplementedException{
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1024);
         PrintStream out = new PrintStream(outputStream);
 
         if (PlatformInfo.getOS().equals("darwin")) {
             closeStream(out,outputStream);
-            throw new Exception("Not available on Darwin");
+            throw new NotAvailableException("Not available on Darwin");
         } else {
             CDebugger cdbg = dbg.getCDebugger();
             if (cdbg != null) {
@@ -216,7 +252,7 @@ public class PStackTool extends MyTool {
                     outputStream.reset();
                 } catch (Exception var16) {
                     closeStream(out,outputStream);
-                    throw new Exception("can't print deadlock information: " + var16.getMessage());
+                    throw new UnKnowException("Can't print deadlock information: " + var16.getMessage());
                 }
 
                 //  获取线程列表，迭代遍历
@@ -326,10 +362,10 @@ public class PStackTool extends MyTool {
                 jStackResult.setJniStack(jniStack);
             } else if (this.getDebugeeType() == 2) {
                 closeStream(out,outputStream);
-                throw new Exception("remote configuration is not yet implemented");
+                throw new ConfigurationException("remote configuration is not yet implemented");
             } else {
                 closeStream(out,outputStream);
-                throw new Exception("not yet implemented (debugger does not support CDebugger!");
+                throw new NotImplementedException("not yet implemented (debugger does not support CDebugger!");
             }
         }
     }
@@ -338,7 +374,7 @@ public class PStackTool extends MyTool {
      * 关闭相应流
      * @param ps {@link PrintStream}
      * @param o {@link OutputStream}
-     * @throws IOException
+     * @throws IOException 关闭流操作失败时会抛出此异常
      */
     private void closeStream(PrintStream ps, OutputStream o) throws IOException {
         ps.close();

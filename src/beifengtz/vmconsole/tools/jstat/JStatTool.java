@@ -1,6 +1,7 @@
-package beifengtz.vmconsole.util;
+package beifengtz.vmconsole.tools.jstat;
 
-import beifengtz.vmconsole.entity.JStatResult;
+import beifengtz.vmconsole.entity.jstat.JStatResult;
+import beifengtz.vmconsole.tools.jstat.JStatResultTool;
 import sun.jvmstat.monitor.Monitor;
 import sun.jvmstat.monitor.MonitorException;
 import sun.jvmstat.monitor.MonitoredVm;
@@ -14,14 +15,16 @@ import java.util.regex.PatternSyntaxException;
 /**
  * @author beifengtz
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
- * <p>location: beifengtz.vmconsole.util.javase_learning</p>
+ * <p>location: beifengtz.vmconsole.tools.jstat</p>
  * Created in 18:02 2019/5/27
+ *
+ * <p>jstat命令核心处理工具类</p>
  */
-public class JStatUtil {
+public class JStatTool {
     private MonitoredVm monitoredVm;
     private volatile boolean active = true;
 
-    public JStatUtil(MonitoredVm var1) {
+    public JStatTool(MonitoredVm var1) {
         this.monitoredVm = var1;
     }
 
@@ -140,7 +143,7 @@ public class JStatUtil {
             }
 //            var5.println(var1.getRow());
 
-            JStatResult jStatResult = JStatResultFactory.getJStatResult(option,var1.getRow());
+            JStatResult jStatResult = JStatResultTool.getJStatResult(option,var1.getRow());
             jStatResult.setVmId(vmId);
             jStatResult.setStrResult(var1.getRow());
             resList.add(jStatResult);
