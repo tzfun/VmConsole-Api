@@ -19,6 +19,8 @@ import java.util.List;
  * <p>location: beifengtz.vmconsole</p>
  * Created in 16:41 2019/5/27
  *
+ * <p>虚拟机内存状态信息查询工具类，该类中提供直接执行命令的方法，但是建议您使用已经封装好的方法。</p>
+ *
  * <p>jstat命令介绍：</p>
  *
  * <p>Jstat用于监控基于HotSpot的JVM，对其堆的使用情况进行实时的命令行的统计，

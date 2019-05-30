@@ -17,6 +17,8 @@ import java.util.ArrayList;
  * <p>location: beifengtz.vmconsole.javase_learning</p>
  * Created in 12:20 2019/5/27
  *
+ * <p>虚拟机进程信息查询工具类，该类中提供直接执行命令的方法，但是建议您使用已经封装好的方法。</p>
+ *
  * <p>jps命令介绍：</p>
  *
  * <p>用来查看基于HotSpot的JVM里面中，所有具有访问权限的Java进程的具体状态,

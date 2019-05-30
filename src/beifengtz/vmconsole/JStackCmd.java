@@ -15,6 +15,8 @@ import java.io.InputStream;
  * <p>location: beifengtz.vmconsole.VmConsole-Api</p>
  * Created in 19:50 2019/5/28
  *
+ * <p>堆栈信息查询工具类，该类中提供直接执行命令的方法，但是建议您使用已经封装好的方法。</p>
+ *
  * <p>jstack命令介绍：</p>
  *
  * <p>

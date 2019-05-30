@@ -15,8 +15,9 @@ import java.io.InputStream;
  * <p>location: beifengtz.vmconsole.VmConsole-Api</p>
  * Created in 16:41 2019/5/30
  *
- * <p>jinfo可以输出并修改运行时的java 进程的options。该类中提供直接执行命令的方法，
- * 但是建议您使用已经封装好的方法。</p>
+ * <p>虚拟机参数查询以及设置工具类，该类中提供直接执行命令的方法，但是建议您使用已经封装好的方法。</p>
+ *
+ * <p>jinfo可以输出并修改运行时的java进程的options。</p>
  *
  * <p>命令调用方法：</p>
  *
