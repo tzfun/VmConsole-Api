@@ -1,6 +1,7 @@
 package beifengtz.vmconsole;
 
 import beifengtz.vmconsole.entity.jstack.JStackResult;
+import beifengtz.vmconsole.exception.AttachingException;
 import beifengtz.vmconsole.tools.jstack.JStackTool;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
@@ -29,11 +30,48 @@ import java.io.InputStream;
  * 程序呈现hung的状态，jstack是非常有用的。</p>
  */
 public class JStackCmd {
-    public static void main(String[] args) throws Exception {
-        run(new String[]{"-F", "3156"});
+    /**
+     * <p>获取线程堆栈详情，封装<code>jstack -F [vmid]</code>命令</p>
+     * @param vmId 虚拟机唯一识别Id
+     * @return JStackResult
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws Exception 异常
+     */
+    public static JStackResult threadStack(int vmId)throws IllegalArgumentException,Exception{
+        return run(new String[]{"-F",String.valueOf(vmId)});
     }
 
-    public static void run(String[] var0) throws IllegalArgumentException, Exception {
+    /**
+     * <p>如果调用到本地方法的话，可以获取C/C++的堆栈，封装<code>jstack -m [vmid]</code>命令</p>
+     * @param vmId 虚拟机唯一识别Id
+     * @return JStackResult
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws Exception 异常
+     */
+    public static JStackResult jniStack(int vmId)throws IllegalArgumentException,Exception{
+        return run(new String[]{"-m",String.valueOf(vmId)});
+    }
+
+    /**
+     * <p>除堆栈外，获取关于锁的附加信息，封装<code>jstack -l [vmid]</code>命令</p>
+     * @param vmId 虚拟机唯一识别Id
+     * @return JStackResult
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws Exception 异常
+     */
+    public static JStackResult threadDump(int vmId)throws IllegalArgumentException,Exception{
+        return run(new String[]{"-l",String.valueOf(vmId)});
+    }
+
+    /**
+     * jstack命令核心执行函数，所有命令都可以在此执行
+     *
+     * @param var0 命令参数
+     * @return JStackResult
+     * @throws IllegalArgumentException 非法参数异常
+     * @throws Exception 异常
+     */
+    public static JStackResult run(String[] var0) throws IllegalArgumentException,Exception {
         if (var0.length == 0) {
             usage();
             throw new IllegalArgumentException("Parameter can not be empty.");
@@ -92,7 +130,7 @@ public class JStackCmd {
                 var6[var7 - var4] = var0[var7];
             }
 
-            runJStackTool(var2, var3, var6);
+            return runJStackTool(var2, var3, var6);
         } else {
             String var9 = var0[var4];
             String[] var10;
@@ -102,11 +140,11 @@ public class JStackCmd {
                 var10 = new String[0];
             }
 
-            runThreadDump(var9, var10);
+            return runThreadDump(var9, var10);
         }
     }
 
-    private static void runJStackTool(boolean var0, boolean var1, String[] var2) throws Exception {
+    private static JStackResult runJStackTool(boolean var0, boolean var1, String[] var2) throws Exception {
 
         if (var0) {
             //  显示Java和C/C++的堆栈
@@ -121,17 +159,7 @@ public class JStackCmd {
 
         JStackResult jStackResult = new JStackResult();
         JStackTool.init(var2,jStackResult);
-
-        System.out.println("------------end-------------");
-        System.out.println(jStackResult);
-    }
-
-    private static Class<?> loadSAToolClass() {
-        try {
-            return Class.forName("beifengtz.vmconsole.tools.jstack.JStackTool", true, ClassLoader.getSystemClassLoader());
-        } catch (Exception var1) {
-            return null;
-        }
+        return jStackResult;
     }
 
     private static Class<?> loadSAClass() {
@@ -142,7 +170,7 @@ public class JStackCmd {
         }
     }
 
-    private static void runThreadDump(String var0, String[] var1) throws Exception {
+    private static JStackResult runThreadDump(String var0, String[] var1) throws Exception {
         VirtualMachine var2 = null;
 
         try {
@@ -150,32 +178,35 @@ public class JStackCmd {
         } catch (Exception var7) {
             String var4 = var7.getMessage();
             if (var4 != null) {
-                System.err.println(var0 + ": " + var4);
+                throw new AttachingException(var0 + ": " + var4);
             } else {
-                var7.printStackTrace();
+                if (var7 instanceof AttachNotSupportedException) {
+                    throw new AttachNotSupportedException("The -F option can be used when the target process is not responding");
+                }
+                throw var7;
             }
-
-            if (var7 instanceof AttachNotSupportedException && loadSAClass() != null) {
-                System.err.println("The -F option can be used when the target process is not responding");
-            }
-
-            System.exit(1);
         }
 
+        //  输入流接收快照
         InputStream var3 = ((HotSpotVirtualMachine)var2).remoteDataDump((Object[])var1);
         byte[] var8 = new byte[256];
+        StringBuilder threadDump = new StringBuilder();
 
         int var5;
         do {
             var5 = var3.read(var8);
             if (var5 > 0) {
                 String var6 = new String(var8, 0, var5, "UTF-8");
-                System.out.print(var6);
+                threadDump.append(var6);
             }
         } while(var5 > 0);
-
+        JStackResult jStackResult = new JStackResult();
+        jStackResult.setThreadDump(threadDump.toString());
+        threadDump = null;
+        var8 = null;
         var3.close();
         var2.detach();
+        return jStackResult;
     }
 
     /**

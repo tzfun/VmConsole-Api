@@ -3,6 +3,7 @@ package beifengtz.vmconsole.tools.jstack;
 import java.io.PrintStream;
 
 import beifengtz.vmconsole.entity.jstack.JStackResult;
+import beifengtz.vmconsole.exception.AttachingException;
 import sun.jvm.hotspot.HotSpotAgent;
 import sun.jvm.hotspot.debugger.DebuggerException;
 import sun.jvm.hotspot.debugger.JVMDebugger;
@@ -188,9 +189,9 @@ public abstract class MyTool implements Runnable {
     private int start(String[] args, JStackResult jStackResult) throws Exception{
         if (args.length >= 1 && args.length <= 2) {
             if (args[0].startsWith("-h")) {
-                return 0;
+                throw new IllegalArgumentException();
             } else if (args[0].startsWith("-")) {
-                return 1;
+                throw new IllegalArgumentException();
             } else {
                 PrintStream err = System.err;
 //                PrintStream out = System.out;
@@ -215,8 +216,7 @@ public abstract class MyTool implements Runnable {
                         this.debugeeType = 1;
                         break;
                     default:
-                        this.usage();
-                        return 1;
+                        throw new IllegalArgumentException();
                 }
 
                 this.agent = new HotSpotAgent();
@@ -237,32 +237,32 @@ public abstract class MyTool implements Runnable {
                             this.agent.attach(remoteServer);
                     }
                 } catch (DebuggerException var10) {
+                    String errMsg = null;
                     switch (this.debugeeType) {
                         case 0:
-                            errStr.append("Error attaching to process: ");
+                            errMsg = "Error attaching to process: ";
+                            errStr.append(errMsg);
                             break;
                         case 1:
-                            errStr.append("Error attaching to core file: ");
+                            errMsg = "Error attaching to core file: ";
+                            errStr.append(errMsg);
                             break;
                         case 2:
-                            errStr.append("Error attaching to remote server: ");
+                            errMsg = "Error attaching to remote server: ";
+                            errStr.append(errMsg);
                     }
 
                     if (var10.getMessage() != null) {
                         errStr.append(var10.getMessage());
                         errStr.append("\n");
-                        throw new Exception(errStr.toString());
                     }
-
-                    err.println();
-                    return 1;
+                    throw new AttachingException(errMsg);
                 }
                 this.startInternal(jStackResult);
                 return 0;
             }
         } else {
-            this.usage();
-            return 1;
+            throw new IllegalArgumentException();
         }
     }
 

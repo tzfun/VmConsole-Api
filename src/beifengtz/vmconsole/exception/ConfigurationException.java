@@ -5,6 +5,8 @@ package beifengtz.vmconsole.exception;
  * <a href='http://www.beifengtz.com'>www.beifengtz.com</a>
  * <p>location: beifengtz.vmconsole.exception.VmConsole-Api</p>
  * Created in 12:46 2019/5/30
+ *
+ * <p>配置信息错误异常类</p>
  */
 public class ConfigurationException extends Exception {
     public ConfigurationException() {

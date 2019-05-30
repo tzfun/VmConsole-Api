@@ -152,7 +152,7 @@ public class JStackTool extends MyTool {
         hasInit = false;
         ToolArg toolArg = initDoFirst(args);
         JStackTool jstack = new JStackTool(toolArg.mixedMode, toolArg.concurrentLocks,jStackResult);
-        jstack.execute(args,jStackResult);
+        jstack.execute(toolArg.args,jStackResult);
     }
 
     /**
@@ -168,7 +168,7 @@ public class JStackTool extends MyTool {
         hasInit = false;
         ToolArg toolArg = initDoFirst(args);
         JStackTool jstack = new JStackTool(toolArg.mixedMode, toolArg.concurrentLocks,ps);
-        jstack.execute(args,ps);
+        jstack.execute(toolArg.args,ps);
     }
 
     /**

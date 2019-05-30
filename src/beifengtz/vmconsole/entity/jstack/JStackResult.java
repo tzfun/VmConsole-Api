@@ -19,6 +19,7 @@ public class JStackResult {
     private String concurrentLocks;
     private List<ThreadStack> threadStacks;
     private ArrayList<StringBuilder> jniStack;
+    private String threadDump;
 
     @Override
     public String toString() {
@@ -29,6 +30,7 @@ public class JStackResult {
                 ", concurrentLocks='" + concurrentLocks + '\'' + "\n" +
                 ", threadStacks=" + threadStacks + "\n" +
                 ", jniStack=" + jniStack + "\n" +
+                ", threadDump='" + threadDump + "\'\n" +
                 "} \n";
     }
 
@@ -78,5 +80,13 @@ public class JStackResult {
 
     public void setConcurrentLocks(String concurrentLocks) {
         this.concurrentLocks = concurrentLocks;
+    }
+
+    public String getThreadDump() {
+        return threadDump;
+    }
+
+    public void setThreadDump(String threadDump) {
+        this.threadDump = threadDump;
     }
 }
