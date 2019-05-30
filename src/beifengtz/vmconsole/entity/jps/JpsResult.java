@@ -1,7 +1,8 @@
 package beifengtz.vmconsole.entity.jps;
 
+import beifengtz.vmconsole.entity.JvmResult;
+
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * @author beifengtz
@@ -12,10 +13,7 @@ import java.util.Objects;
  * <p>JpsResult实体类</p>
  * <p>用于封装jps命令返回的结果集，将各个结果参数分离出来</p>
  */
-public class JpsResult {
-
-    //  虚拟机唯一识别码
-    private Integer vmId;
+public class JpsResult extends JvmResult {
 
     //  主类
     private String mainClass;
@@ -41,7 +39,7 @@ public class JpsResult {
     @Override
     public String toString() {
         return "JpsResult{" +
-                "vmId=" + vmId +
+                "vmId=" + super.getVmId() +
                 ", mainClass='" + mainClass + '\'' +
                 ", mainArgs='" + mainArgs + '\'' +
                 ", vmArgs='" + vmArgs + '\'' +
@@ -52,33 +50,12 @@ public class JpsResult {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof JpsResult)) return false;
-        JpsResult jpsResult = (JpsResult) o;
-        return getVmId().equals(jpsResult.getVmId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getVmId());
-    }
-
     public String getMainClass() {
         return mainClass;
     }
 
     public void setMainClass(String mainClass) {
         this.mainClass = mainClass;
-    }
-
-    public Integer getVmId() {
-        return vmId;
-    }
-
-    public void setVmId(Integer vmId) {
-        this.vmId = vmId;
     }
 
     public String getMainArgs() {

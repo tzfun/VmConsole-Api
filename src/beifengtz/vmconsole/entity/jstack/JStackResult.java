@@ -1,5 +1,7 @@
 package beifengtz.vmconsole.entity.jstack;
 
+import beifengtz.vmconsole.entity.JvmResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +14,7 @@ import java.util.List;
  * <p>JStackResult实体类</p>
  * <p>用于封装jstack命令返回的结果集</p>
  */
-public class JStackResult {
-    private int vmId;
-    private String vmVersion;
+public class JStackResult extends JvmResult {
     private String deadlocks;
     private String concurrentLocks;
     private List<ThreadStack> threadStacks;
@@ -23,31 +23,15 @@ public class JStackResult {
 
     @Override
     public String toString() {
-        return "JStackResult{ \n" +
-                "vmId=" + vmId + "\n" +
-                ", vmVersion='" + vmVersion + '\'' + "\n" +
-                ", deadlocks='" + deadlocks + '\'' + "\n" +
-                ", concurrentLocks='" + concurrentLocks + '\'' + "\n" +
-                ", threadStacks=" + threadStacks + "\n" +
-                ", jniStack=" + jniStack + "\n" +
-                ", threadDump='" + threadDump + "\'\n" +
-                "} \n";
-    }
-
-    public int getVmId() {
-        return vmId;
-    }
-
-    public void setVmId(int vmId) {
-        this.vmId = vmId;
-    }
-
-    public String getVmVersion() {
-        return vmVersion;
-    }
-
-    public void setVmVersion(String vmVersion) {
-        this.vmVersion = vmVersion;
+        return "JStackResult{ " +
+                "vmId=" + super.getVmId() +
+                ", vmVersion='" + super.getVmVersion() + '\'' +
+                ", deadlocks='" + deadlocks + '\'' +
+                ", concurrentLocks='" + concurrentLocks + '\'' +
+                ", threadStacks=" + threadStacks +
+                ", jniStack=" + jniStack +
+                ", threadDump='" + threadDump + "\'" +
+                "} ";
     }
 
     public List<ThreadStack> getThreadStacks() {

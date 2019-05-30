@@ -10,7 +10,7 @@ import beifengtz.vmconsole.JStatCmd;
  */
 public class JStatTest {
     public static void main(String[] args) {
-        int vmId = 111;
+        int vmId = 11004;
 
         System.out.println(JStatCmd.list());
         System.out.println(JStatCmd.snap(vmId));

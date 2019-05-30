@@ -1,7 +1,8 @@
-package beifengtz.vmconsole.tools.jstack;
+package beifengtz.vmconsole.tools;
 
 import java.io.PrintStream;
 
+import beifengtz.vmconsole.entity.JvmResult;
 import beifengtz.vmconsole.entity.jstack.JStackResult;
 import beifengtz.vmconsole.exception.AttachingException;
 import sun.jvm.hotspot.HotSpotAgent;
@@ -36,23 +37,23 @@ public abstract class MyTool implements Runnable {
         return this.getClass().getName();
     }
 
-    protected boolean needsJavaPrefix() {
+    public boolean needsJavaPrefix() {
         return true;
     }
 
-    protected void setAgent(HotSpotAgent a) {
+    public void setAgent(HotSpotAgent a) {
         this.agent = a;
     }
 
-    protected void setDebugeeType(int dt) {
+    public void setDebugeeType(int dt) {
         this.debugeeType = dt;
     }
 
-    protected HotSpotAgent getAgent() {
+    public HotSpotAgent getAgent() {
         return this.agent;
     }
 
-    protected int getDebugeeType() {
+    public int getDebugeeType() {
         return this.debugeeType;
     }
 
@@ -91,9 +92,9 @@ public abstract class MyTool implements Runnable {
         }
     }
 
-    public void execute(String[] args, JStackResult jStackResult) throws Exception{
+    public void execute(String[] args, JvmResult jvmResult) throws Exception{
         try {
-            this.start(args, jStackResult);
+            this.start(args, jvmResult);
         } finally {
             this.stop();
         }
@@ -186,7 +187,7 @@ public abstract class MyTool implements Runnable {
         }
     }
 
-    private int start(String[] args, JStackResult jStackResult) throws Exception{
+    private int start(String[] args, JvmResult jvmResult) throws Exception{
         if (args.length >= 1 && args.length <= 2) {
             if (args[0].startsWith("-h")) {
                 throw new IllegalArgumentException();
@@ -224,7 +225,7 @@ public abstract class MyTool implements Runnable {
                 try {
                     switch (this.debugeeType) {
                         case 0:
-                            jStackResult.setVmId(pid);
+                            jvmResult.setVmId(pid);
 //                            out.println("Attaching to process ID " + pid + ", please wait...");
                             this.agent.attach(pid);
                             break;
@@ -258,7 +259,7 @@ public abstract class MyTool implements Runnable {
                     }
                     throw new AttachingException(errMsg);
                 }
-                this.startInternal(jStackResult);
+                this.startInternal(jvmResult);
                 return 0;
             }
         } else {
@@ -300,7 +301,7 @@ public abstract class MyTool implements Runnable {
         this.run();
     }
 
-    private void startInternal(JStackResult jStackResult) {
+    private void startInternal(JvmResult jvmResult) {
 //        PrintStream out = System.out;
         VM vm = VM.getVM();
         if (vm.isCore()) {
@@ -316,7 +317,7 @@ public abstract class MyTool implements Runnable {
 
         String version = vm.getVMRelease();
         if (version != null) {
-            jStackResult.setVmVersion(version);
+            jvmResult.setVmVersion(version);
         }
 
         this.run();

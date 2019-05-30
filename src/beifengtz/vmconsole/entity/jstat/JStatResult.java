@@ -1,5 +1,7 @@
 package beifengtz.vmconsole.entity.jstat;
 
+import beifengtz.vmconsole.entity.JvmResult;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -12,10 +14,7 @@ import java.util.Objects;
  * <p>JStatResult实体类</p>
  * <p>用于封装jstat命令的结果，通用结果集，所有jstat实体类的父类</p>
  */
-public class JStatResult {
-
-    //  虚拟机唯一识别id
-    private Integer vmId;
+public class JStatResult extends JvmResult {
 
     //  虚拟机信息列表，仅包含名字
     private ArrayList<String> names;
@@ -31,31 +30,10 @@ public class JStatResult {
     @Override
     public String toString() {
         return "JStatResult{" +
-                "vmId=" + vmId +
+                "vmId=" + super.getVmId() +
                 ", names=" + names +
                 ", snapShot=" + snapShot +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof JStatResult)) return false;
-        JStatResult that = (JStatResult) o;
-        return getVmId().equals(that.getVmId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getVmId());
-    }
-
-    public Integer getVmId() {
-        return vmId;
-    }
-
-    public void setVmId(Integer vmId) {
-        this.vmId = vmId;
     }
 
     public String getStrResult() {

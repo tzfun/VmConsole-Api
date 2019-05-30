@@ -2,6 +2,7 @@ package beifengtz.vmconsole.tools.jstack;
 
 import beifengtz.vmconsole.entity.jstack.JStackResult;
 import beifengtz.vmconsole.exception.*;
+import beifengtz.vmconsole.tools.MyTool;
 import sun.jvm.hotspot.debugger.AddressException;
 import sun.jvm.hotspot.debugger.JVMDebugger;
 
@@ -45,7 +46,7 @@ public class JStackTool extends MyTool {
         calledType = 1;
     }
 
-    protected boolean needsJavaPrefix() {
+    public boolean needsJavaPrefix() {
         return false;
     }
 
