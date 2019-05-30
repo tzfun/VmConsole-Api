@@ -1,11 +1,12 @@
 package beifengtz.vmconsole;
 
+import beifengtz.vmconsole.entity.jinfo.JInfoResult;
+import beifengtz.vmconsole.tools.jinfo.JInfoTool;
 import com.sun.tools.attach.VirtualMachine;
 import sun.tools.attach.HotSpotVirtualMachine;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Method;
 
 /**
  * @author beifengtz
@@ -17,7 +18,7 @@ import java.lang.reflect.Method;
  */
 public class JInfoCmd {
 
-    public static void run(String[] var0) throws Exception{
+    public static JInfoResult run(String[] var0) throws Exception{
         if (var0.length == 0) {
             throw new IllegalArgumentException("Parameter can not be empty.");
         }
@@ -38,29 +39,35 @@ public class JInfoCmd {
         }
 
         if (var1) {
-            runTool(var0);
+            return runTool(var0);
         } else if (var0.length == 3) {
             String var5 = var0[2];
             String var4 = var0[1];
-            flag(var5, var4);
+            return flag(var5, var4);
         } else {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void runTool(String[] var0) throws Exception {
-        String var1 = "sun.JvmResult.hotspot.tools.JInfo";
-        Class var2 = loadClass(var1);
-        if (var2 == null) {
-            usage(1);
-        }
-
-        Class[] var3 = new Class[]{String[].class};
-        Method var4 = var2.getDeclaredMethod("main", var3);
-        Object[] var5 = new Object[]{var0};
-        var4.invoke((Object)null, var5);
+    /**
+     * 调用JInfo查询工具
+     * @param var0 命令参数
+     * @return {@link JInfoResult}对象
+     * @throws Exception 异常
+     */
+    private static JInfoResult runTool(String[] var0) throws Exception {
+        JInfoResult jInfoResult = new JInfoResult();
+        JInfoTool.init(var0,jInfoResult);
+        jInfoResult.setCommandType(JInfoResult.COMMANDTYPE_QUERY);
+        return jInfoResult;
     }
 
+    /**
+     * 反射加载类
+     *
+     * @param var0 类全路径
+     * @return Class对象
+     */
     private static Class<?> loadClass(String var0) {
         try {
             return Class.forName(var0, true, ClassLoader.getSystemClassLoader());
@@ -69,7 +76,7 @@ public class JInfoCmd {
         }
     }
 
-    private static void flag(String var0, String var1) throws IOException {
+    private static JInfoResult flag(String var0, String var1) throws IOException {
         VirtualMachine var2 = attach(var0);
         int var5 = var1.indexOf(61);
         String var3;
@@ -95,6 +102,7 @@ public class JInfoCmd {
         }
 
         drain(var2, var4);
+        return null;
     }
 
     private static VirtualMachine attach(String var0) {
@@ -127,39 +135,5 @@ public class JInfoCmd {
 
         var1.close();
         var0.detach();
-    }
-
-    private static void usage(int var0) {
-        Class var1 = loadClass("sun.JvmResult.hotspot.tools.JInfo");
-        boolean var2 = var1 != null;
-        System.err.println("Usage:");
-        if (var2) {
-            System.err.println("    jinfo [option] <pid>");
-            System.err.println("        (to connect to running process)");
-            System.err.println("    jinfo [option] <executable <core>");
-            System.err.println("        (to connect to a core file)");
-            System.err.println("    jinfo [option] [server_id@]<remote server IP or hostname>");
-            System.err.println("        (to connect to remote debug server)");
-            System.err.println("");
-            System.err.println("where <option> is one of:");
-            System.err.println("    -flag <name>         to print the value of the named VM flag");
-            System.err.println("    -flag [+|-]<name>    to enable or disable the named VM flag");
-            System.err.println("    -flag <name>=<value> to set the named VM flag to the given value");
-            System.err.println("    -flags               to print VM flags");
-            System.err.println("    -sysprops            to print Java system properties");
-            System.err.println("    <no option>          to print both of the above");
-            System.err.println("    -h | -help           to print this help message");
-        } else {
-            System.err.println("    jinfo <option> <pid>");
-            System.err.println("       (to connect to a running process)");
-            System.err.println("");
-            System.err.println("where <option> is one of:");
-            System.err.println("    -flag <name>         to print the value of the named VM flag");
-            System.err.println("    -flag [+|-]<name>    to enable or disable the named VM flag");
-            System.err.println("    -flag <name>=<value> to set the named VM flag to the given value");
-            System.err.println("    -h | -help           to print this help message");
-        }
-
-        System.exit(var0);
     }
 }

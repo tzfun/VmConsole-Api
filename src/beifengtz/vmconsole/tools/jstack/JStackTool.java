@@ -142,6 +142,23 @@ public class JStackTool extends MyTool {
     /**
      * <p>初始化方法，在使用{@link JStackTool}实例方法的时候必须调用init方法</p>
      *
+     * <p>传入命令参数和{@link PrintStream}打印流，其中命令参数用于
+     * 解析命令参数，打印流用于接收数据</p>
+     *
+     * @param args 命令参数
+     * @param ps 输出流，命令结果将直接输入到其中
+     */
+    public static void init(String[] args, PrintStream ps) {
+        hasInit = false;
+        ToolArg toolArg = initDoFirst(args);
+        JStackTool jstack = new JStackTool(toolArg.mixedMode, toolArg.concurrentLocks,ps);
+        jstack.execute(toolArg.args,ps);
+    }
+
+
+    /**
+     * <p>初始化方法，在使用{@link JStackTool}实例方法的时候必须调用init方法</p>
+     *
      * <p>传入命令参数和{@link JStackResult}结果集对象，其中命令参数用于
      * 解析命令参数，结果集对象用于接收并封装数据</p>
      *
@@ -154,22 +171,6 @@ public class JStackTool extends MyTool {
         ToolArg toolArg = initDoFirst(args);
         JStackTool jstack = new JStackTool(toolArg.mixedMode, toolArg.concurrentLocks,jStackResult);
         jstack.execute(toolArg.args,jStackResult);
-    }
-
-    /**
-     * <p>初始化方法，在使用{@link JStackTool}实例方法的时候必须调用init方法</p>
-     *
-     * <p>传入命令参数和{@link PrintStream}打印流，其中命令参数用于
-     * 解析命令参数，打印流用于接收数据</p>
-     *
-     * @param args 命令参数
-     * @param ps 输出流，命令结果将直接输入到其中
-     */
-    public static void init(String[] args, PrintStream ps) {
-        hasInit = false;
-        ToolArg toolArg = initDoFirst(args);
-        JStackTool jstack = new JStackTool(toolArg.mixedMode, toolArg.concurrentLocks,ps);
-        jstack.execute(toolArg.args,ps);
     }
 
     /**
