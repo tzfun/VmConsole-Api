@@ -19,7 +19,7 @@ import java.io.InputStream;
  * <p>
  * jstack用于打印出给定的java进程ID或core file或远程调试服务的Java
  * 堆栈信息，如果是在64位机器上，需要指定选项"-J-d64"，Windows的jstack
- * 使用方式只支持以下的这种方式：<code>jstack [-l] pid<code></p>
+ * 使用方式只支持以下的这种方式：<code>jstack [-l]pid</code></p>
  *
  * <p>
  * 如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack

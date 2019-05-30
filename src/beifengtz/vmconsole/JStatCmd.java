@@ -98,7 +98,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForClass>
+     * @return JStatResultForClass集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -152,7 +152,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGc>
+     * @return JStatResultForGc集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -206,7 +206,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForCompiler>
+     * @return JStatResultForCompiler集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -260,7 +260,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGcCapacity>
+     * @return JStatResultForGcCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -314,7 +314,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGcNew>
+     * @return JStatResultForGcNew集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -368,7 +368,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGcNewCapacity>
+     * @return JStatResultForGcNewCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -422,7 +422,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGcOld>
+     * @return JStatResultForGcOld集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -476,7 +476,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGcOldCapacity>
+     * @return JStatResultForGcOldCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -530,7 +530,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGcMetaCapacity>
+     * @return JStatResultForGcMetaCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -584,7 +584,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForGcMetaCapacity>
+     * @return JStatResultForGcMetaCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -638,7 +638,7 @@ public class JStatCmd {
      * @param vmId 虚拟机唯一识别id
      * @param interval 时间间隔，单位ms
      * @param count 返回条数
-     * @return ArrayList<JStatResultForCompilation>
+     * @return JStatResultForCompilation集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
      */
@@ -668,7 +668,7 @@ public class JStatCmd {
      * <p>jstat命令执行函数</p>
      *
      * @param var0 命令参数
-     * @return ArrayList<JStatResult> {@link JStatResult}的集合
+     * @return {@link JStatResult}的集合
      * @throws IllegalArgumentException 参数非法异常
      */
     public static ArrayList<JStatResult> run(String[] var0) throws IllegalArgumentException {

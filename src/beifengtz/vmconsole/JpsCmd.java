@@ -89,7 +89,7 @@ public class JpsCmd {
      *      <p>-v 输出虚拟机进程启动时JVM的参数</p>
      *      <p>-V 输出虚拟机标志信息</p>
      *
-     * @return List<JpsResult> {@link JpsResult}对象
+     * @return {@link JpsResult}对象集合
      *
      * @throws IllegalArgumentException 非法参数异常
      * @throws MonitorException 监控异常

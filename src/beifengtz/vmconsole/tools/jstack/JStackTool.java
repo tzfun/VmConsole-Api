@@ -111,7 +111,7 @@ public class JStackTool extends MyTool {
     /**
      * <p>抛出未初始化异常类</p>
      *
-     * @throws {@link UnInitException}
+     * @throws UnInitException 未初始化异常
      */
     public static void throwInitException() throws UnInitException{
         throw new UnInitException("JStackTool have not initialized. The caller should call the init method first.");
@@ -146,6 +146,7 @@ public class JStackTool extends MyTool {
      *
      * @param args 命令参数
      * @param jStackResult   jStack结果集对象
+     * @throws Exception 异常
      */
     public static void init(String[] args, JStackResult jStackResult) throws Exception{
         hasInit = false;
