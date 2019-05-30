@@ -6,14 +6,14 @@
 **本项目遵守Apache开源协议，核心代码由本人根据jdk源码拓展或改造而来，无模仿或抄袭。**
 
 # API文档
-我已经将相关类生成了API文档，请访问：[doc.console.beifengtz.com](http://doc.console.beifengtz.com)
+我已经将相关类生成了API文档，请访问：[doc.vmconsole.beifengtz.com](http://doc.vmconsole.beifengtz.com)
 
 # 如何使用
 我将核心库打包生成了一个jar包(3MB左右)，你只需要将jar包导入到项目就可以直接使用其中的类，我已经将jdk核心的依赖包导入到该jar包，无需导入任何其他包。以后我会将该jar包发布到公共Maven仓库，以后可以直接从仓库下载就可以了。
 
-jar包下载地址：[VmConsole-Api-0.0.1.jar](https://beifengtz.oss-cn-beijing.aliyuncs.com/VmConsole-Api-0.0.1.jar?Expires=1559234708&OSSAccessKeyId=TMP.AgFAUEDUe45wT1Ih0OvdfO8n3BVzxDzERHlvyyGGXrXsYotFR_rIKGQWsz3yAAAwLAIUYTCbXc8C1y05AIi5kOnWItIcak4CFAsq28OHQ6BVLi2uvY-BLPmzAL2F&Signature=M%2B%2F7GXV%2FxW96VqzRW%2BEszBBWGBM%3D)
+jar包下载地址（百度云盘地址）：[https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ](https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ)（提取码：57uc）
 
-使用实例：
+使用示例：
 ```
 import beifengtz.vmconsole.JpsCmd;
 import beifengtz.vmconsole.entity.jps.JpsResult;
@@ -47,7 +47,7 @@ public class JpsTest {
 
 <img src=https://vr360-beifengtz.oss-cn-beijing.aliyuncs.com/beifengtz/%E5%85%AC%E4%BC%97%E5%8F%B7.png width=200/>
 
-# VmConsole详细介绍
+# VmConsole详细介绍文档
 
 目前为止，已经封装了jps、jstat、jstack、jinfo、jcmd五个命令，使用者可以直接通过每个工具类的run方法直接执行相关命令，命令格式和jdk提供的工具命令格式一模一样，也可以使用我已经封装好了的方法，不过方便以及可靠性保证，建议你使用已经封装好的方法。
 
@@ -55,9 +55,9 @@ public class JpsTest {
 
 在jdk中的jps可以获取虚拟机实例的虚拟机唯一识别VMID、虚拟机参数、主类参数和jar全称等。
 
-调用类位置：**beifengtz.vmconsole.JpsCmd**
+调用类位置：`beifengtz.vmconsole.JpsCmd`
 
-返回的JpsResult对象：**beifengtz.vmconsole.entity.jps.JpsCmd**
+返回的JpsResult对象：`beifengtz.vmconsole.entity.jps.JpsCmd`
 
 **JpsResult对象参数及其含义：**
 ```
@@ -105,9 +105,9 @@ public static List<JpsResult> run(String[] var0)
 
 在jdk中的jstat可以获取虚拟机内存状态信息，包括GC信息、编译类信息、元数据内存信息等。
 
-调用类位置：**beifengtz.vmconsole.JStatCmd**
+调用类位置：`beifengtz.vmconsole.JStatCmd`
 
-返回的JStatResult对象：**beifengtz.vmconsole.entity.jstat.JStatResult**
+返回的JStatResult对象：`beifengtz.vmconsole.entity.jstat.JStatResult`
 ```
 java.lang.Object
     beifengtz.vmconsole.entity.JvmResult
@@ -254,9 +254,9 @@ public static ArrayList<JStatResult> run(String[] var0)
 ## 3.jstack
 在jdk中jstack工具用于查询虚拟机堆栈信息，包括线程堆栈、dump文件、c/c++方法堆栈等。
 
-调用类位置：**beifengtz.vmconsole.JStackCmd**
+调用类位置： `beifengtz.vmconsole.JStackCmd`
 
-返回的JStackResult对象：**beifengtz.vmconsole.entity.jstack.JStackResult**
+返回的JStackResult对象： `beifengtz.vmconsole.entity.jstack.JStackResult`
 ```
 java.lang.Object
     beifengtz.vmconsole.entity.JvmResult
@@ -358,9 +358,9 @@ public static JInfoResult run(String[] var0)
 
 在jdk7以后提供了一个新的工具jcmd，它可以为在虚拟机上执行一些命令然后返回信息。
 
-调用位置：**beifengtz.vmconsole.JCmd**
+调用位置：`beifengtz.vmconsole.JCmd`
 
-返回的JStackResult对象：**beifengtz.vmconsole.entity.jinfo.JCmdResult**
+返回的JStackResult对象：`beifengtz.vmconsole.entity.jinfo.JCmdResult`
 ```
 java.lang.Object
     beifengtz.vmconsole.entity.JvmResult
