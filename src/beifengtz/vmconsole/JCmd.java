@@ -25,7 +25,7 @@ import java.util.List;
  * <p>location: beifengtz.vmconsole.VmConsole-Api</p>
  * Created in 19:55 2019/5/30
  *
- * <p>jcmd命令执行类，可对对于的虚拟机执行相应命令并返回结果</p>
+ * <p>jcmd命令执行类，可对对应的虚拟机执行相应命令并返回结果</p>
  *
  * <p>支持执行的命令如下：</p>
  *
@@ -76,6 +76,7 @@ public class JCmd {
     }
 
     /**
+     * 根据虚拟机vmId执行命令
      *
      * @param vmId 虚拟机唯一识别id
      * @param jCmdEnum {@link JCmdEnum}命令枚举类

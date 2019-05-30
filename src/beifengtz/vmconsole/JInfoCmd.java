@@ -19,14 +19,6 @@ import java.io.InputStream;
  *
  * <p>jinfo可以输出并修改运行时的java进程的options。</p>
  *
- * <p>命令调用方法：</p>
- *
- * <p>    -flag <name>         to print the value of the named VM flag</p>
- * <p>    -flag [+|-]<name>    to enable or disable the named VM flag</p>
- * <p>    -flag <name>=<value> to set the named VM flag to the given value</p>
- * <p>    -flags               to print VM flags</p>
- * <p>    -sysprops            to print Java system properties</p>
- * <p>    <no option>          to print both of the above</p>
  */
 public class JInfoCmd {
 
