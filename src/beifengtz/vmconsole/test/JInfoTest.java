@@ -10,6 +10,8 @@ import beifengtz.vmconsole.JInfoCmd;
  */
 public class JInfoTest {
     public static void main(String[] args) throws Exception{
-        System.out.println(JInfoCmd.run(new String[]{"11004"}));
+        System.out.println(JInfoCmd.run(new String[]{"-flag","CICompilerCount=3","11004"}));
+//        System.out.println(JInfoCmd.run(new String[]{"-flag","+HeapDumpOnOutOfMemoryError","11004"}));
+//        System.out.println(JInfoCmd.run(new String[]{"-flag","-HeapDumpOnOutOfMemoryError","11004"}));
     }
 }
