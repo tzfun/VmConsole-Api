@@ -16,9 +16,9 @@ public class JStatResultForClass extends JStatResult {
     private int loaded;
     //  所占用空间大小
     private double bytes;
-    //  未加载数量
+    //  卸载数量
     private int unLoaded;
-    //  未占用空间大小
+    //  卸载空间大小
     private double unBytes;
     //  时间
     private double time;

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class JpsResult extends JvmResult {
 
-    //  主类
+    //  主类信息
     private String mainClass;
 
     //  虚拟机主类参数信息
