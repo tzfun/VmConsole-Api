@@ -11,12 +11,15 @@ import java.util.Objects;
  *
  *
  *
- * Jps用于封装jps命令返回的结果集，将各个结果参数分离出来
+ * <p>用于封装jps命令返回的结果集，将各个结果参数分离出来</p>
  */
 public class JpsResult {
 
     //  虚拟机唯一识别码
     private Integer vmId;
+
+    //  主类
+    private String mainClass;
 
     //  虚拟机主类参数信息
     private String mainArgs;
@@ -40,6 +43,7 @@ public class JpsResult {
     public String toString() {
         return "JpsResult{" +
                 "vmId=" + vmId +
+                ", mainClass='" + mainClass + '\'' +
                 ", mainArgs='" + mainArgs + '\'' +
                 ", vmArgs='" + vmArgs + '\'' +
                 ", vmFlags='" + vmFlags + '\'' +
@@ -60,6 +64,14 @@ public class JpsResult {
     @Override
     public int hashCode() {
         return Objects.hash(getVmId());
+    }
+
+    public String getMainClass() {
+        return mainClass;
+    }
+
+    public void setMainClass(String mainClass) {
+        this.mainClass = mainClass;
     }
 
     public Integer getVmId() {

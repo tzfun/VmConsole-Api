@@ -17,44 +17,34 @@ import java.util.ArrayList;
  * <p>location: beifengtz.vmconsole.javase_learning</p>
  * Created in 12:20 2019/5/27
  *
- * jps命令介绍：
+ * <p>jps命令介绍：</p>
  *
- * 用来查看基于HotSpot的JVM里面中，所有具有访问权限的Java进程的具体状态,
+ * <p>用来查看基于HotSpot的JVM里面中，所有具有访问权限的Java进程的具体状态,
  *  包括进程ID，进程启动的路径及启动参数等等，与unix上的ps类似，只不过jps
- * 是用来显示java进程，可以把jps理解为ps的一个子集。
+ * 是用来显示java进程，可以把jps理解为ps的一个子集。</p>
  *
- * 使用jps时，如果没有指定hostid，它只会显示本地环境中所有的Java进程；
+ * <p>使用jps时，如果没有指定hostid，它只会显示本地环境中所有的Java进程；
  * 如果指定了hostid，它就会显示指定hostid上面的java进程，不过这需要远程服
- * 务上开启了jstatd服务，可使用JStatCmd相关API。
+ * 务上开启了jstatd服务，可使用JStatCmd相关API。</p>
  *
  */
 public class JpsCmd {
     private static Arguments arguments;
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(JpsCmd.run(new String[]{"-l"}));
-        }catch (IllegalArgumentException e){
-            e.printStackTrace();
-        }catch (MonitorException e){
-            e.printStackTrace();
-        }
-    }
-
     /**
      * jps命令函数
      *
-     * @param var0 {@link String} 传入jps命令的参数
-     *      -q 输出虚拟机唯一ID，不输出类名、Jar名和传入main方法的参数
-     *      -m 输出传入main方法的参数
-     *      -l 输出main类或Jar的全名
-     *      -v 输出虚拟机进程启动时JVM的参数
-     *      -V 输出虚拟机标志信息
+     * @param var0 String类型，传入jps命令的参数：
+     *      <p>-q 输出虚拟机唯一ID，不输出类名、Jar名和传入main方法的参数</p>
+     *      <p>-m 输出传入main方法的参数</p>
+     *      <p>-l 输出main类或Jar的全名</p>
+     *      <p>-v 输出虚拟机进程启动时JVM的参数</p>
+     *      <p>-V 输出虚拟机标志信息</p>
      *
-     * @return List<JpsResult> {@link JpsResult}
+     * @return List<JpsResult> {@link JpsResult}对象
      *
-     * @throws {@link IllegalArgumentException}
-     * @throws {@link MonitorException}
+     * @throws IllegalArgumentException
+     * @throws MonitorException
      */
     public static List<JpsResult> run(String[] var0) throws IllegalArgumentException, MonitorException {
 
@@ -123,7 +113,9 @@ public class JpsCmd {
                         var11 = " -- main class information unavailable";
 
                         //  拼接结果，添加虚拟机运行的主类方法详情信息
-                        var6.append(" " + MonitoredVmUtil.mainClass(var9, arguments.showLongPaths()));
+                        var6.append(" ");
+                        var6.append(MonitoredVmUtil.mainClass(var9, arguments.showLongPaths()));
+                        jpsResult.setMainClass(MonitoredVmUtil.mainClass(var9, arguments.showLongPaths()));
 
                         //  用于接收主类参数、虚拟机参数以及虚拟机标志信息
                         String var13;
@@ -137,7 +129,8 @@ public class JpsCmd {
 
                             //  拼接结果，添加主类参数
                             if (var13 != null && var13.length() > 0) {
-                                var6.append(" " + var13);
+                                var6.append(" ");
+                                var6.append(var13);
                                 jpsResult.setMainArgs(var13);
                             }
                         }
@@ -151,7 +144,8 @@ public class JpsCmd {
 
                             //  拼接结果，添加虚拟机参数
                             if (var13 != null && var13.length() > 0) {
-                                var6.append(" " + var13);
+                                var6.append(" ");
+                                var6.append(var13);
                                 jpsResult.setVmArgs(var13);
                             }
                         }
@@ -165,7 +159,8 @@ public class JpsCmd {
 
                             //  拼接结果，添加虚拟机标志信息
                             if (var13 != null && var13.length() > 0) {
-                                var6.append(" " + var13);
+                                var6.append(" ");
+                                var6.append(var13);
                                 jpsResult.setVmFlags(var13);
                             }
                         }
