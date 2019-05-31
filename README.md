@@ -18,7 +18,7 @@ jar包下载地址（百度云盘地址）：[https://pan.baidu.com/s/1ydtemNmUz
 ```
 <dependency>
   <groupId>com.github.tzfun</groupId>
-  <artifactId>vmconsole</artifactId>
+  <artifactId>vmconsole-api</artifactId>
   <version>1.0.0</version>
 </dependency>
 ```
