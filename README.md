@@ -9,9 +9,19 @@
 我已经将相关类生成了API文档，请访问：[doc.vmconsole.beifengtz.com](http://doc.vmconsole.beifengtz.com)
 
 # 如何使用
-我将核心库打包生成了一个jar包(3MB左右)，你只需要将jar包导入到项目就可以直接使用其中的类，我已经将jdk核心的依赖包导入到该jar包，无需导入任何其他包。以后我会将该jar包发布到公共Maven仓库，以后可以直接从仓库下载就可以了。
+我已将核心依赖库打包生成了一个jar包(3MB左右)，你只需要将jar包导入到项目就可以直接使用其中的类，无需导入任何其他包。
 
+* **jar包下载**
 jar包下载地址（百度云盘地址）：[https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ](https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ)（提取码：57uc）
+
+* **Maven仓库**
+```
+<dependency>
+  <groupId>com.github.tzfun</groupId>
+  <artifactId>vmconsole</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
 使用示例：
 ```
@@ -30,6 +40,9 @@ public class JpsTest {
         List<JpsResult> jpsResult3 = JpsCmd.withMainClassArgs();
         //  获取本地虚拟机所有虚拟机进程id，同时获取jar或者主类全称
         List<JpsResult> jpsResult4 = JpsCmd.withFullName();
+
+        //  自定义执行jps命令的参数，此处相当于在命令行执行jps -l
+        List<JpsResult> jpsResult4 = JpsCmd.run(new String[]("-l"));
     }
 }
 ```
@@ -49,7 +62,7 @@ public class JpsTest {
 
 # VmConsole详细介绍文档
 
-目前为止，已经封装了jps、jstat、jstack、jinfo、jcmd五个命令，使用者可以直接通过每个工具类的run方法直接执行相关命令，命令格式和jdk提供的工具命令格式一模一样，也可以使用我已经封装好了的方法，不过方便以及可靠性保证，建议你使用已经封装好的方法。
+目前为止，我已经封装了jps、jstat、jstack、jinfo、jcmd五个命令，使用者可以直接通过每个工具类的run方法直接执行相关命令（主需要传入参数，不需要传入jps、jstat等命令），命令格式和jdk提供的工具命令格式一模一样，也可以使用我已经封装好了的方法，不过为了方便以及可靠性保证，建议你使用已经封装好的方法。
 
 ## 1.jps
 
