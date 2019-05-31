@@ -12,16 +12,12 @@
 我已将核心依赖库打包生成了一个jar包(3MB左右)，你只需要将jar包导入到项目就可以直接使用其中的类，无需导入任何其他包。
 
 * **jar包下载**
+
 jar包下载地址（百度云盘地址）：[https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ](https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ)（提取码：57uc）
 
-* **Maven仓库**
-```
-<dependency>
-  <groupId>com.github.tzfun</groupId>
-  <artifactId>vmconsole-api</artifactId>
-  <version>1.0.0</version>
-</dependency>
-```
+* **Maven依赖**
+
+作者正在努力上传中，不就会更新
 
 使用示例：
 ```
