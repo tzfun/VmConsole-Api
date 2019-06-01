@@ -3,7 +3,6 @@ package beifengtz.vmconsole.tools;
 import java.io.PrintStream;
 
 import beifengtz.vmconsole.entity.JvmResult;
-import beifengtz.vmconsole.entity.jstack.JStackResult;
 import beifengtz.vmconsole.exception.AttachingException;
 import sun.jvm.hotspot.HotSpotAgent;
 import sun.jvm.hotspot.debugger.DebuggerException;

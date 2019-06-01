@@ -13,11 +13,21 @@
 
 * **jar包下载**
 
-jar包下载地址（百度云盘地址）：[https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ](https://pan.baidu.com/s/1ydtemNmUzBUTOOP_Qi7VgQ)（提取码：57uc）
+链接：[https://pan.baidu.com/s/15ptIBoJJqSJghxCewOyEGg](https://pan.baidu.com/s/15ptIBoJJqSJghxCewOyEGg) 
+
+提取码：nuia 
 
 * **Maven依赖**
 
-作者正在努力上传中，不就会更新
+在pom.xml中引入如下依赖(以下是最新版本)：
+```
+<dependency>
+  <groupId>com.github.tzfun</groupId>
+  <artifactId>vmconsole</artifactId>
+  <version>1.0.3</version>
+  <classifier>jar-with-dependencies</classifier>
+</dependency>
+```
 
 使用示例：
 ```
