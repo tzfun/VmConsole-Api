@@ -13,9 +13,9 @@
 
 * **jar包下载**
 
-链接：[https://pan.baidu.com/s/15ptIBoJJqSJghxCewOyEGg](https://pan.baidu.com/s/15ptIBoJJqSJghxCewOyEGg) 
-
-提取码：nuia 
+  提供两种下载方式，任选其一即可
+    * github下载：[https://github.com/tzfun/VmConsole-Api/releases](https://github.com/tzfun/VmConsole-Api/releases)
+    * 百度云盘下载：链接：[https://pan.baidu.com/s/15ptIBoJJqSJghxCewOyEGg](https://pan.baidu.com/s/15ptIBoJJqSJghxCewOyEGg) 提取码：nuia 
 
 * **Maven依赖**
 
