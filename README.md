@@ -20,7 +20,7 @@
 * **Maven依赖**
 
 在pom.xml中引入如下依赖(以下是最新版本)：
-```
+```xml
 <dependency>
   <groupId>com.github.tzfun</groupId>
   <artifactId>vmconsole</artifactId>
@@ -30,7 +30,7 @@
 ```
 
 使用示例：
-```
+```java
 import beifengtz.vmconsole.JpsCmd;
 import beifengtz.vmconsole.entity.jps.JpsResult;
 
@@ -79,7 +79,7 @@ public class JpsTest {
 返回的JpsResult对象：`beifengtz.vmconsole.entity.jps.JpsCmd`
 
 **JpsResult对象参数及其含义：**
-```
+```java
 //  主类信息
 private String mainClass;
 
@@ -103,7 +103,7 @@ private String strResult;
 ```
 
 **JpsCmd可使用方法：**
-```
+```java
 //  仅获取虚拟机的vmId，封装命令：jps -q 
 public static List<JpsResult> quit();
 
@@ -127,14 +127,14 @@ public static List<JpsResult> run(String[] var0)
 调用类位置：`beifengtz.vmconsole.JStatCmd`
 
 返回的JStatResult对象：`beifengtz.vmconsole.entity.jstat.JStatResult`
-```
+```java
 java.lang.Object
     beifengtz.vmconsole.entity.JvmResult
         beifengtz.vmconsole.entity.jstat.JStatResult
 ```
 
 **JvmResult对象参数及其含义：**
-```
+```java
 //  虚拟机唯一识别vmId，大部分命令执行都需要此信息
 private Integer vmId;
 
@@ -143,7 +143,7 @@ private String vmVersion;
 ```
 
 **JStatResult对象参数及其含义：**
-```
+```java
 //  虚拟机信息列表，仅包含名字
 private ArrayList<String> names;
 
@@ -193,7 +193,7 @@ FailedMethod：失败的方法
 ```
 
 **JStatCmd可使用方法：**
-```
+```java
 //  获取虚拟机信息列表，仅包含名字，封装jstat -list命令
 public static JStatResult list();
 
@@ -276,14 +276,14 @@ public static ArrayList<JStatResult> run(String[] var0)
 调用类位置： `beifengtz.vmconsole.JStackCmd`
 
 返回的JStackResult对象： `beifengtz.vmconsole.entity.jstack.JStackResult`
-```
+```java
 java.lang.Object
     beifengtz.vmconsole.entity.JvmResult
         beifengtz.vmconsole.entity.jstack.JStackResult
 ```
 
 **JStackResult对象参数及其含义：**
-```
+```java
 //  死锁堆栈信息
 private String deadlocks;
 
@@ -301,7 +301,7 @@ private String threadDump;
 ```
 
 **JStackCmd可使用方法：**
-```
+```java
 //  除堆栈外，获取关于锁的附加信息，封装jstack -l [vmid]命令
 public static JStackResult threadStack(int vmId)
 
@@ -322,14 +322,14 @@ public static JStackResult run(String[] var0)
 调用位置：**beifengtz.vmconsole.JInfoCmd**
 
 返回的JStackResult对象：**beifengtz.vmconsole.entity.jinfo.JInfoResult**
-```
+```java
 java.lang.Object
     beifengtz.vmconsole.entity.JvmResult
         beifengtz.vmconsole.entity.jinfo.JInfoResult
 ```
 
 **JInfoResult对象参数及其含义：**
-```
+```java
 //  信息列表，成员为JInfoNode对象，其形式为key-value
 private List<JInfoNode> infoList;
 
@@ -347,7 +347,7 @@ private boolean setSuccess;
 ```
 
 **JInfoCmd可使用方法：**
-```
+```java
 //  查询flag信息和系统参数信息，相当于直接执行命令jinfo [vmId]
 public static JInfoResult queryFlagsAndSysInfo(int vmId)
 
@@ -380,14 +380,14 @@ public static JInfoResult run(String[] var0)
 调用位置：`beifengtz.vmconsole.JCmd`
 
 返回的JStackResult对象：`beifengtz.vmconsole.entity.jinfo.JCmdResult`
-```
+```java
 java.lang.Object
     beifengtz.vmconsole.entity.JvmResult
         beifengtz.vmconsole.entity.jinfo.JCmdResult
 ```
 
 **JCmdResult对象参数及其含义：**
-```
+```java
 //  虚拟机线程列表，其中包含vmId和content
 private List<JCmdProcess> processes;
 
@@ -396,7 +396,7 @@ private String result;
 ```
 
 **JCmd可使用方法：**
-```
+```java
 //  列出虚拟机进程列表，相当于直接执行jcmd命令
 public static JCmdResult listProcess() 
 
@@ -408,7 +408,7 @@ public static JCmdResult executeCommand(int vmId, JCmdEnum jCmdEnum)
 ```
 
 **JCmdEnum枚举类支持的命令**
-```
+```java
 JFR_STOP("JFR.stop"),
 JFR_START("JFR.start"),
 JFR_DUMP("JFR.dump"),
