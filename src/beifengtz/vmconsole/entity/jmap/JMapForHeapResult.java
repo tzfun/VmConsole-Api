@@ -10,7 +10,7 @@ import java.util.HashMap;
  * <p>location: beifengtz.vmconsole.entity.jmap.VmConsole-Api</p>
  * Created in 13:04 2019/6/16
  */
-public class JMapForHeap extends JvmResult {
+public class JMapForHeapResult extends JvmResult {
     private HashMap<String,Object> heapConf;
     private JMapForHeapUsage heapUsage;
 
@@ -21,7 +21,7 @@ public class JMapForHeap extends JvmResult {
 
     @Override
     public String toString() {
-        return "JMapForHeap{" +
+        return "JMapForHeapResult{" +
                 "heapConf=" + heapConf +
                 ", heapUsage=" + heapUsage +
                 '}';

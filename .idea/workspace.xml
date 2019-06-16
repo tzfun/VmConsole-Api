@@ -7,15 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3451231-663d-4247-9e7c-4420e113d76b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForGen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapSpace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapUsage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForG1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="99" column="27" lean-forward="true" selection-start-line="99" selection-start-column="27" selection-end-line="99" selection-end-column="27" />
+            <state relative-caret-position="460">
+              <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,8 +65,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beifengtz/test/JMapTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="305">
+              <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,10 +146,10 @@
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForG1.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapUsage.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeap.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForGen.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapSpace.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" />
       </list>
     </option>
   </component>
@@ -304,14 +303,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
               <item name="vmconsole" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
-              <item name="vmconsole" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -321,7 +312,7 @@
               <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
               <item name="vmconsole" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="jstack" type="462c0819:PsiDirectoryNode" />
+              <item name="jmap" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
@@ -496,7 +487,7 @@
       <workItem from="1560134468872" duration="36000" />
       <workItem from="1560140419957" duration="754000" />
       <workItem from="1560653633428" duration="314000" />
-      <workItem from="1560654419949" duration="14902000" />
+      <workItem from="1560654419949" duration="16127000" />
     </task>
     <task id="LOCAL-00001" summary="完成jstat、jps基本api">
       <created>1559019557458</created>
@@ -617,11 +608,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560660811867</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="新增jmap中查询heap信息、流式接收class实例数目信息两个功能">
+      <created>1560669918283</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1560669918283</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100163000" />
+    <option name="totallyTimeSpent" value="101388000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -681,7 +679,8 @@
     <MESSAGE value="修改部分注释，上传README文件" />
     <MESSAGE value="修改MyTool注释" />
     <MESSAGE value="新增jmap命令，支持保存dump文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增jmap命令，支持保存dump文件" />
+    <MESSAGE value="新增jmap中查询heap信息、流式接收class实例数目信息两个功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增jmap中查询heap信息、流式接收class实例数目信息两个功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1088,17 +1087,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="99" column="27" lean-forward="true" selection-start-line="99" selection-start-column="27" selection-end-line="99" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeap.java">
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
@@ -1162,10 +1151,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/beifengtz/test/JMapTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="305">
+          <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

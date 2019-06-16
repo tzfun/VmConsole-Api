@@ -34,7 +34,7 @@ public class HeapSummaryTool extends MyTool {
     private static final double FACTOR = 1048576.0D;
     private static boolean hasInit;
     private PrintStream ps = System.out;
-    private JMapForHeap jMapForHeap;
+    private JMapForHeapResult jMapForHeapResult;
     private boolean resultWithObject;  //  是否以对象形式接收，true用对象，false用打印流
 
     public HeapSummaryTool() {
@@ -45,8 +45,8 @@ public class HeapSummaryTool extends MyTool {
         resultWithObject = false;
     }
 
-    public HeapSummaryTool(JMapForHeap jMapForHeap) {
-        this.jMapForHeap = jMapForHeap;
+    public HeapSummaryTool(JMapForHeapResult jMapForHeapResult) {
+        this.jMapForHeapResult = jMapForHeapResult;
         hasInit = true;
         resultWithObject = true;
     }
@@ -56,10 +56,10 @@ public class HeapSummaryTool extends MyTool {
         resultWithObject = false;
     }
 
-    public static void init(String[] args, JMapForHeap jMapForHeap) throws Exception{
+    public static void init(String[] args, JMapForHeapResult jMapForHeapResult) throws Exception{
         hasInit = false;
-        HeapSummaryTool hs = new HeapSummaryTool(jMapForHeap);
-        hs.execute(args, jMapForHeap);
+        HeapSummaryTool hs = new HeapSummaryTool(jMapForHeapResult);
+        hs.execute(args, jMapForHeapResult);
     }
 
     public void run() {
@@ -79,7 +79,7 @@ public class HeapSummaryTool extends MyTool {
         }
         if (resultWithObject){
             //  对象接收
-            this.run(heap,flagMap,jMapForHeap);
+            this.run(heap,flagMap, jMapForHeapResult);
         }else {
             //  打印流接收
             this.run(heap,flagMap,ps);
@@ -173,19 +173,19 @@ public class HeapSummaryTool extends MyTool {
     /**
      * 用对象处理结果
      */
-    private void run(CollectedHeap heap,Map flagMap,JMapForHeap jMapForHeap){
-        jMapForHeap.getHeapConf().put("MinHeapFreeRatio",this.getFlagValue("MinHeapFreeRatio", flagMap));
-        jMapForHeap.getHeapConf().put("MaxHeapFreeRatio",this.getFlagValue("MaxHeapFreeRatio", flagMap));
-        jMapForHeap.getHeapConf().put("MaxHeapSize",this.getFlagValue("MaxHeapSize", flagMap));
-        jMapForHeap.getHeapConf().put("NewSize",this.getFlagValue("NewSize", flagMap));
-        jMapForHeap.getHeapConf().put("MaxNewSize",this.getFlagValue("MaxNewSize", flagMap));
-        jMapForHeap.getHeapConf().put("OldSize",this.getFlagValue("OldSize", flagMap));
-        jMapForHeap.getHeapConf().put("NewRatio",this.getFlagValue("NewRatio", flagMap));
-        jMapForHeap.getHeapConf().put("SurvivorRatio",this.getFlagValue("SurvivorRatio", flagMap));
-        jMapForHeap.getHeapConf().put("MetaspaceSize",this.getFlagValue("MetaspaceSize", flagMap));
-        jMapForHeap.getHeapConf().put("CompressedClassSpaceSize",this.getFlagValue("CompressedClassSpaceSize", flagMap));
-        jMapForHeap.getHeapConf().put("MaxMetaspaceSize",this.getFlagValue("MaxMetaspaceSize", flagMap));
-        jMapForHeap.getHeapConf().put("G1HeapRegionSize",this.getFlagValue("G1HeapRegionSize", flagMap));
+    private void run(CollectedHeap heap, Map flagMap, JMapForHeapResult jMapForHeapResult){
+        jMapForHeapResult.getHeapConf().put("MinHeapFreeRatio",this.getFlagValue("MinHeapFreeRatio", flagMap));
+        jMapForHeapResult.getHeapConf().put("MaxHeapFreeRatio",this.getFlagValue("MaxHeapFreeRatio", flagMap));
+        jMapForHeapResult.getHeapConf().put("MaxHeapSize",this.getFlagValue("MaxHeapSize", flagMap));
+        jMapForHeapResult.getHeapConf().put("NewSize",this.getFlagValue("NewSize", flagMap));
+        jMapForHeapResult.getHeapConf().put("MaxNewSize",this.getFlagValue("MaxNewSize", flagMap));
+        jMapForHeapResult.getHeapConf().put("OldSize",this.getFlagValue("OldSize", flagMap));
+        jMapForHeapResult.getHeapConf().put("NewRatio",this.getFlagValue("NewRatio", flagMap));
+        jMapForHeapResult.getHeapConf().put("SurvivorRatio",this.getFlagValue("SurvivorRatio", flagMap));
+        jMapForHeapResult.getHeapConf().put("MetaspaceSize",this.getFlagValue("MetaspaceSize", flagMap));
+        jMapForHeapResult.getHeapConf().put("CompressedClassSpaceSize",this.getFlagValue("CompressedClassSpaceSize", flagMap));
+        jMapForHeapResult.getHeapConf().put("MaxMetaspaceSize",this.getFlagValue("MaxMetaspaceSize", flagMap));
+        jMapForHeapResult.getHeapConf().put("G1HeapRegionSize",this.getFlagValue("G1HeapRegionSize", flagMap));
 
         long edenRegionNum;
         //  这里根据不同垃圾收集器类型来进行处理
@@ -193,7 +193,7 @@ public class HeapSummaryTool extends MyTool {
             SharedHeap sharedHeap = (SharedHeap)heap;
             if (sharedHeap instanceof GenCollectedHeap) {
                 GenCollectedHeap genHeap = (GenCollectedHeap)sharedHeap;
-                HeapForGen heapForGen = jMapForHeap.getHeapUsage().getHeapForGen() == null ? new HeapForGen() : jMapForHeap.getHeapUsage().getHeapForGen();
+                HeapForGen heapForGen = jMapForHeapResult.getHeapUsage().getHeapForGen() == null ? new HeapForGen() : jMapForHeapResult.getHeapUsage().getHeapForGen();
                 for(int n = 0; n < genHeap.nGens(); ++n) {
                     Generation gen = genHeap.getGen(n);
                     if (gen instanceof DefNewGeneration) {
@@ -207,7 +207,7 @@ public class HeapSummaryTool extends MyTool {
                     } else {
                         heapForGen.setOldGen(this.dealMutableSpace(gen.name(),gen));
                     }
-                    jMapForHeap.getHeapUsage().setHeapForGen(heapForGen);
+                    jMapForHeapResult.getHeapUsage().setHeapForGen(heapForGen);
                 }
             } else {
                 if (!(sharedHeap instanceof G1CollectedHeap)) {
@@ -228,14 +228,14 @@ public class HeapSummaryTool extends MyTool {
                 heapForG1.setEden(this.instanceG1Space("Eden Space:", edenRegionNum, g1mm.edenUsed(), g1mm.edenCommitted()));
                 heapForG1.setSurvivor(this.instanceG1Space("Survivor Space:", survivorRegionNum, g1mm.survivorUsed(), g1mm.survivorCommitted()));
                 heapForG1.setOld(this.instanceG1Space("G1 Old Generation:", oldRegionNum, g1mm.oldUsed(), g1mm.oldCommitted()));
-                jMapForHeap.getHeapUsage().setHeapForG1(heapForG1);
+                jMapForHeapResult.getHeapUsage().setHeapForG1(heapForG1);
             }
         } else {
             if (!(heap instanceof ParallelScavengeHeap)) {
                 throw new RuntimeException("unknown CollectedHeap type : " + heap.getClass());
             }
             //  如果为null则创建新的HeapForGen
-            HeapForGen heapForGen = jMapForHeap.getHeapUsage().getHeapForGen() == null ? new HeapForGen() : jMapForHeap.getHeapUsage().getHeapForGen();
+            HeapForGen heapForGen = jMapForHeapResult.getHeapUsage().getHeapForGen() == null ? new HeapForGen() : jMapForHeapResult.getHeapUsage().getHeapForGen();
 
             ParallelScavengeHeap psh = (ParallelScavengeHeap)heap;
             PSYoungGen youngGen = psh.youngGen();
@@ -250,7 +250,7 @@ public class HeapSummaryTool extends MyTool {
                     String.valueOf(edenRegionNum),
                     (double)oldGen.used() * 100.0D / (double)oldGen.capacity() + "%"
             ));
-            jMapForHeap.getHeapUsage().setHeapForGen(heapForGen);
+            jMapForHeapResult.getHeapUsage().setHeapForGen(heapForGen);
         }
 //        this.printInternStringStatistics();
     }

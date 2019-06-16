@@ -1,6 +1,6 @@
 package beifengtz.vmconsole;
 
-import beifengtz.vmconsole.entity.jmap.JMapForHeap;
+import beifengtz.vmconsole.entity.jmap.JMapForHeapResult;
 import beifengtz.vmconsole.tools.jmap.HeapSummaryTool;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
@@ -91,13 +91,13 @@ public class JMapCmd {
      * 获取虚拟机heap信息，包含配置信息、年轻代占用比例、老年代占用比例等
      *
      * @param vmId  虚拟机ID
-     * @return  JMapForHeap
+     * @return  JMapForHeapResult
      * @throws Exception 执行错误会抛出异常
      */
-    public static JMapForHeap heapInfo(int vmId) throws Exception{
-        JMapForHeap jMapForHeap = new JMapForHeap();
-        HeapSummaryTool.init(new String[]{String.valueOf(vmId)},jMapForHeap);
-        return jMapForHeap;
+    public static JMapForHeapResult heapInfo(int vmId) throws Exception{
+        JMapForHeapResult jMapForHeapResult = new JMapForHeapResult();
+        HeapSummaryTool.init(new String[]{String.valueOf(vmId)}, jMapForHeapResult);
+        return jMapForHeapResult;
     }
 
     private static void run(String[] var0) throws Exception {
