@@ -17,7 +17,7 @@ public class JMapTest {
         JMapCmd.dumpAll(8468, "c:/users/tzplay/desktop/test.bin");
 
         //  只保存存活对象信息的dump文件，保存成功返回true，失败false
-        JMapCmd.dumpAll(8468, "c:/users/tzplay/desktop/test.bin");
+        JMapCmd.dumpLive(8468, "c:/users/tzplay/desktop/test.bin");
 
         //  获取全部对象的class实例数据，从输出流中读取数据
         InputStream histoAllIS = JMapCmd.histoAll(8468);
