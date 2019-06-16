@@ -106,6 +106,13 @@ public abstract class MyTool implements Runnable {
 
     }
 
+    /**
+     * 将输出结果推入输出流
+     * @param args 命令参数
+     * @param out 输出流
+     * @param err 发送错误输出流
+     * @return int 0成功，1失败
+     */
     private int start(String[] args, PrintStream out, PrintStream err) {
         if (args.length >= 1 && args.length <= 2) {
             if (args[0].startsWith("-h")) {
@@ -186,6 +193,13 @@ public abstract class MyTool implements Runnable {
         }
     }
 
+    /**
+     * 将输出结果推入输出流
+     * @param args 命令参数
+     * @param jvmResult {@link JvmResult}结果对象
+     * @return int 0成功，1失败
+     * @throws Exception 异常
+     */
     private int start(String[] args, JvmResult jvmResult) throws Exception{
         if (args.length >= 1 && args.length <= 2) {
             if (args[0].startsWith("-h")) {
