@@ -7,10 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3451231-663d-4247-9e7c-4420e113d76b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForGen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapSpace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapUsage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForG1.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="65" column="11" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+            <state relative-caret-position="443">
+              <caret line="99" column="27" lean-forward="true" selection-start-line="99" selection-start-column="27" selection-end-line="99" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,74 +42,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_144/src.zip!/java/io/File.java">
+        <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3839">
-              <caret line="274" column="11" selection-start-line="274" selection-start-column="11" selection-end-line="274" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/attach/HotSpotVirtualMachine.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="177" column="25" selection-start-line="177" selection-start-column="25" selection-end-line="177" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/attach/WindowsVirtualMachine.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="622">
-              <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+            <state relative-caret-position="347">
+              <caret line="229" column="63" selection-start-line="229" selection-start-column="63" selection-end-line="229" selection-end-column="63" />
               <folding>
-                <element signature="e#0#4518#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#printGCAlgorithm#0;class#HeapSummaryTool#0" />
+                <element signature="method#printPSYoungGen#0;class#HeapSummaryTool#0" />
+                <element signature="e#18872#18873#0" expanded="true" />
+                <element signature="e#18925#18926#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForGen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="512">
+              <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/beifengtz/test/JMapTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_144/src.zip!/java/lang/IllegalArgumentException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
-              <folding>
-                <element signature="e#828#829#0" expanded="true" />
-                <element signature="e#852#853#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/jmap/JMap.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="287" column="25" selection-start-line="287" selection-start-column="25" selection-end-line="287" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="230">
+              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -125,6 +91,7 @@
       <find>printThreadIDOn</find>
       <find>Processe</find>
       <find>System</find>
+      <find>PS Young Generation</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,13 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcUtil.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForCompilation.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/util/JStatUtil.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/StackTraceTool.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/PStackTool.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstat/JStatTool.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstat/JStatResultTool.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/test/JStatCmd.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/test/JpsTest.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/JStatdCmd.java" />
@@ -182,8 +142,15 @@
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/MyTool.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/JmapCmd.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapResult.java" />
-        <option value="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapResult.java" />
         <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForG1.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapUsage.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeap.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForGen.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java" />
+        <option value="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapSpace.java" />
       </list>
     </option>
   </component>
@@ -241,6 +208,16 @@
               <item name="sun" type="462c0819:PsiDirectoryNode" />
               <item name="jvm" type="462c0819:PsiDirectoryNode" />
               <item name="hotspot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="sa-jdi.jar" type="ab9368bb:PsiFileNode" />
+              <item name="sun" type="462c0819:PsiDirectoryNode" />
+              <item name="jvm" type="462c0819:PsiDirectoryNode" />
+              <item name="hotspot" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
@@ -323,6 +300,31 @@
             </path>
             <path>
               <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
+              <item name="vmconsole" type="462c0819:PsiDirectoryNode" />
+              <item name="exception" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
+              <item name="vmconsole" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
+              <item name="vmconsole" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="jstack" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VmConsole-Api" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -345,6 +347,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="beifengtz.vmconsole.entity.jmap" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\My personal file\programme study\MY_Program\github\VmConsole-Api\lib" />
       <recent name="D:\My personal file\programme study\MY_Program\github\VmConsole-Api\src\beifengtz" />
@@ -491,7 +496,7 @@
       <workItem from="1560134468872" duration="36000" />
       <workItem from="1560140419957" duration="754000" />
       <workItem from="1560653633428" duration="314000" />
-      <workItem from="1560654419949" duration="5852000" />
+      <workItem from="1560654419949" duration="14902000" />
     </task>
     <task id="LOCAL-00001" summary="完成jstat、jps基本api">
       <created>1559019557458</created>
@@ -605,17 +610,23 @@
       <option name="project" value="LOCAL" />
       <updated>1560653705578</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="新增jmap命令，支持保存dump文件">
+      <created>1560660811867</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1560660811867</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91113000" />
+    <option name="totallyTimeSpent" value="100163000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.20657277" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20657277" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -669,7 +680,8 @@
     <MESSAGE value="修改文件结构，打包成jar" />
     <MESSAGE value="修改部分注释，上传README文件" />
     <MESSAGE value="修改MyTool注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改MyTool注释" />
+    <MESSAGE value="新增jmap命令，支持保存dump文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增jmap命令，支持保存dump文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -681,14 +693,14 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/beifengtz/vmconsole/JStackCmd.java</url>
-          <line>144</line>
+          <url>file://$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java</url>
+          <line>177</line>
           <properties />
-          <option name="timeStamp" value="21" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java</url>
-          <line>196</line>
+          <line>234</line>
           <properties class="beifengtz.vmconsole.JMapCmd" method="dump">
             <option name="EMULATED" value="true" />
           </properties>
@@ -698,98 +710,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/jps/Jps.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/jvmstat/monitor/MonitoredHost.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/jinfo/JInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/jcmd/Arguments.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/jcmd/JCmd.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/jstack/JStack.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/sa-jdi.jar!/sun/jvm/hotspot/tools/JMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/sa-jdi.jar!/sun/jvm/hotspot/tools/JInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="8" column="41" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/test/JCmdTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/sa-jdi.jar!/sun/jvm/hotspot/HotSpotAgent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/test/JStackTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JpsCmd.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
@@ -815,16 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="675" column="33" lean-forward="true" selection-start-line="675" selection-start-column="33" selection-end-line="675" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JStackCmd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1025,26 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/MyTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="198" column="21" selection-start-line="198" selection-start-column="21" selection-end-line="198" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#start#0;class#MyTool#0" />
-            <element signature="method#start#1;class#MyTool#0" />
-            <element signature="method#startInternal#0;class#MyTool#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/JStackTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="62" column="23" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/com/sun/tools/script/shell/Main.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -1074,10 +964,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapResult.java">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_144/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="-3839">
+          <caret line="274" column="11" selection-start-line="274" selection-start-column="11" selection-end-line="274" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1091,16 +981,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_144/src.zip!/java/io/File.java">
+    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/attach/HotSpotVirtualMachine.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3839">
-          <caret line="274" column="11" selection-start-line="274" selection-start-column="11" selection-end-line="274" selection-end-column="11" />
+        <state relative-caret-position="176">
+          <caret line="175" column="5" lean-forward="true" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/attach/WindowsVirtualMachine.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
+        <state relative-caret-position="967">
           <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
           <folding>
             <element signature="e#0#4518#0" expanded="true" />
@@ -1108,27 +998,174 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/tools.jar!/sun/tools/attach/HotSpotVirtualMachine.class">
+    <entry file="jar://$PROJECT_DIR$/lib/sa-jdi.jar!/sun/jvm/hotspot/tools/HeapSummary.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="177" column="25" selection-start-line="177" selection-start-column="25" selection-end-line="177" selection-end-column="25" />
+        <state relative-caret-position="92">
+          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beifengtz/test/JMapTest.java">
+    <entry file="jar://$PROJECT_DIR$/lib/sa-jdi.jar!/sun/jvm/hotspot/tools/Tool.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
+        <state relative-caret-position="240">
+          <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/StackTraceTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="61" column="38" lean-forward="true" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JStackCmd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="162" column="20" lean-forward="true" selection-start-line="162" selection-start-column="20" selection-end-line="162" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/MyTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#start#0;class#MyTool#0" />
+            <element signature="method#start#1;class#MyTool#0" />
+            <element signature="method#startInternal#0;class#MyTool#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_144/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="473" column="11" selection-start-line="473" selection-start-column="11" selection-end-line="473" selection-end-column="11" />
+          <folding>
+            <element signature="e#19296#19297#0" expanded="true" />
+            <element signature="e#19379#19380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForG1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapUsage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/PStackTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3900">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/JStackTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="70" column="33" lean-forward="true" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="65" column="11" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+        <state relative-caret-position="443">
+          <caret line="99" column="27" lean-forward="true" selection-start-line="99" selection-start-column="27" selection-end-line="99" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#1015#1016#0" expanded="true" />
+            <element signature="e#1055#1056#0" expanded="true" />
+            <element signature="e#1087#1088#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="e#1197#1198#0" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#1349#1350#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1420#1421#0" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1487#1488#0" expanded="true" />
+            <element signature="e#1519#1520#0" expanded="true" />
+            <element signature="e#1550#1551#0" expanded="true" />
+            <element signature="e#1577#1578#0" expanded="true" />
+            <element signature="e#1617#1618#0" expanded="true" />
+            <element signature="e#1649#1650#0" expanded="true" />
+            <element signature="e#1684#1685#0" expanded="true" />
+            <element signature="e#1715#1716#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="229" column="63" selection-start-line="229" selection-start-column="63" selection-end-line="229" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#printGCAlgorithm#0;class#HeapSummaryTool#0" />
+            <element signature="method#printPSYoungGen#0;class#HeapSummaryTool#0" />
+            <element signature="e#18872#18873#0" expanded="true" />
+            <element signature="e#18925#18926#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beifengtz/test/JMapTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>

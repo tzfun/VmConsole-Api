@@ -1,5 +1,7 @@
 package beifengtz.vmconsole;
 
+import beifengtz.vmconsole.entity.jmap.JMapForHeap;
+import beifengtz.vmconsole.tools.jmap.HeapSummaryTool;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
 import sun.tools.attach.HotSpotVirtualMachine;
@@ -63,6 +65,41 @@ public class JMapCmd {
         }
     }
 
+    /**
+     * 每个class的实例数目,内存占用,类全名信息.
+     * @param vmId 虚拟机ID
+     * @return InputStream 输出流
+     * @throws IOException IO异常
+     */
+    public static InputStream histoAll(int vmId) throws IOException{
+        VirtualMachine var2 = attach(String.valueOf(vmId));
+        return ((HotSpotVirtualMachine)var2).heapHisto(new Object[]{"-all"});
+    }
+
+    /**
+     * 每个class的实例数目,内存占用,类全名信息.只统计活的对象数量.
+     * @param vmId 虚拟机ID
+     * @return InputStream 输出流
+     * @throws IOException IO异常
+     */
+    public static InputStream histoLive(int vmId) throws IOException{
+        VirtualMachine var2 = attach(String.valueOf(vmId));
+        return ((HotSpotVirtualMachine)var2).heapHisto(new Object[]{"-live"});
+    }
+
+    /**
+     * 获取虚拟机heap信息，包含配置信息、年轻代占用比例、老年代占用比例等
+     *
+     * @param vmId  虚拟机ID
+     * @return  JMapForHeap
+     * @throws Exception 执行错误会抛出异常
+     */
+    public static JMapForHeap heapInfo(int vmId) throws Exception{
+        JMapForHeap jMapForHeap = new JMapForHeap();
+        HeapSummaryTool.init(new String[]{String.valueOf(vmId)},jMapForHeap);
+        return jMapForHeap;
+    }
+
     private static void run(String[] var0) throws Exception {
         if (var0.length == 0) {
             throw new IllegalArgumentException("Input parameters cannot be empty");
@@ -120,6 +157,7 @@ public class JMapCmd {
             var1 = true;
         }
 
+        //  var1为true则需要调用SA包的工具类
         if (var1) {
             //  重新拼接参数
             String[] var5 = new String[var7];
@@ -166,12 +204,12 @@ public class JMapCmd {
         }
 
         if (var3 == null) {
-            usage(1);
+            throw new IllegalArgumentException();
         }
 
         Class var9 = loadClass(var3);
         if (var9 == null) {
-            usage(1);
+            throw new ClassNotFoundException(var3);
         }
 
         Class[] var5 = new Class[]{String[].class};
@@ -284,7 +322,7 @@ public class JMapCmd {
             var3 = var1.read(var2);
             if (var3 > 0) {
                 String var4 = new String(var2, 0, var3, "UTF-8");
-//                System.out.print(var4);
+                System.out.print(var4);
             }
         } while(var3 > 0);
 

@@ -11,6 +11,7 @@ import beifengtz.vmconsole.JMapCmd;
 public class JMapTest {
     public static void main(String[] args) throws Exception{
 //        JMapCmd.run(new String[]{"-dump:live,format=b,file=test.bin","8468"});
-        System.out.println(JMapCmd.dumpAll(8468, "c:/users/tzplay/desktop/test.bin"));
+//        System.out.println(JMapCmd.dumpAll(8468, "c:/users/tzplay/desktop/test.bin"));
+        System.out.println(JMapCmd.heapInfo(8468));
     }
 }
