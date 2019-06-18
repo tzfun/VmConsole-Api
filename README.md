@@ -63,12 +63,6 @@ public class JpsTest {
 
 如果你在使用中发现了Bug，或者想对本作品提出意见或建议，请发送邮件到作者本人邮箱：[beifengtz@163.com](mailto:beifengtz@163.com)
 
-以下QQ群用于开发者交流，欢迎与作者互动。
-
-* 865687569
-
-<img src=http://vr360-beifengtz.oss-cn-beijing.aliyuncs.com/beifengtz/QQGroup.jpg width=200/>
-
 # 关于作者
 
 * 个人首页：[www.beifengtz.com](http://www.beifengtz.com)
