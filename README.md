@@ -104,7 +104,7 @@ JpsCmd类可以获取本地虚拟机实例的虚拟机唯一识别VMID、虚拟�
 
 ### 1.2结果对象
 所有可能返回对象的继承关系结构
-```java
+```
 |—— beifengtz.vmconsole.entity.JvmResult
     |—— beifengtz.vmconsole.entity.jps.JpsResult
 ```
@@ -136,7 +136,7 @@ JvmResult的内容介绍请见开始使用。
 | run() | String[] var0（命令参数）| JInfoResult | 自定义执行jinfo命令，不过建议你使用上面的方法|
 ### 2.2 结果对象
 所有可能返回对象的继承关系结构
-```java
+```
 |—— beifengtz.vmconsole.entity.JvmResult
     |—— beifengtz.vmconsole.entity.jinfo.JInfoResult
 
@@ -192,7 +192,7 @@ JvmResult的内容介绍请见开始使用。
 | run() | String[] var0（命令参数） | ArrayList\<JStatResult\> | 自定义执行jstat命令 |  
 ### 3.2 结果对象
 所有可能返回对象的继承关系结构
-```java
+```
 |—— beifengtz.vmconsole.entity.JvmResult
     |—— beifengtz.vmconsole.entity.jstat.JStatResult
         |—— beifengtz.vmconsole.entity.jstat.JStatResultForClass
@@ -215,7 +215,7 @@ JvmResult的内容介绍请见开始使用。
 | ~~strResult~~ | String | 未经处理的 jstat命令执行结果，**不建议使用，后续版本将去掉** |
 #### 3.2.2 JStatResult各子类属性含义
 参数详细讲解看我的博客：[JVM虚拟机性能监控与故障处理工具](http://blog.beifengtz.com/article/52#directory051025813848240414)
-~~~java
+~~~
 S0C：s0（from）的大小
 S1C：s1（from）的大小
 S0U：s0（from）已使用的空间
@@ -302,7 +302,7 @@ FailedMethod：失败的方法
 | heapInfo() | int vmId（虚拟机ID，JpsCmd可获取）| JMapForHeapResult | 获取堆内存信息，包括Eden、Survivor From、Survivor To、Old区等 |
 ### 5.2 结果对象
 所有可能返回对象的继承关系结构
-```java
+```
 |—— beifengtz.vmconsole.entity.JvmResult
     |—— beifengtz.vmconsole.entity.jmap.JMapForHeapResult 
 
@@ -362,7 +362,7 @@ FailedMethod：失败的方法
 | executeCommand() | 1. int vmId（虚拟机ID，JpsCmd可获取）<br/>2. JCmdEnum jCmdEnum（命令枚举类）| JCmdResult| 向某一个虚拟机实例执行命令|
 | ~~executeCommand()~~ | 1. int vmId（虚拟机ID，JpsCmd可获取）<br/>2. JCmdEnum... jCmdEnum（命令枚举类数组）| JCmdResult| 向某一个虚拟机实例执行批量命令，**后期将取消**|
 ### 6.2 结果对象
-```java
+```
 |—— beifengtz.vmconsole.entity.JvmResult
     |—— beifengtz.vmconsole.entity.jcmd.JCmdResult
 
