@@ -24,4 +24,5 @@ hs_err_pid*
 
 .idea/
 _config.yml
-VmConsole-Api.iml
+*.iml
+target
