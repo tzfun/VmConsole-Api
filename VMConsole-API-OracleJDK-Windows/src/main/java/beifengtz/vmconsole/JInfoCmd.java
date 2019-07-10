@@ -2,6 +2,7 @@ package beifengtz.vmconsole;
 
 import beifengtz.vmconsole.entity.jinfo.JInfoFlag;
 import beifengtz.vmconsole.entity.jinfo.JInfoResult;
+import beifengtz.vmconsole.security.SystemEnvironment;
 import beifengtz.vmconsole.tools.jinfo.JInfoTool;
 import com.sun.tools.attach.VirtualMachine;
 import sun.tools.attach.HotSpotVirtualMachine;
@@ -57,6 +58,9 @@ public class JInfoCmd {
      * @throws Exception 异常
      */
     public static JInfoResult run(String[] var0) throws Exception{
+
+        SystemEnvironment.checkWindowsAndOracleJdk();
+
         if (var0.length == 0) {
             throw new IllegalArgumentException("Parameter can not be empty.");
         }

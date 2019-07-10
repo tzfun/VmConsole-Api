@@ -1,6 +1,8 @@
 package beifengtz.vmconsole;
 
 import beifengtz.vmconsole.entity.jps.JpsResult;
+import beifengtz.vmconsole.exception.NotSupportedEnvironmentException;
+import beifengtz.vmconsole.security.SystemEnvironment;
 import sun.jvmstat.monitor.*;
 import sun.tools.jps.Arguments;
 
@@ -40,8 +42,9 @@ public class JpsCmd {
      * @return JpsResult的集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws MonitorException 监控异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      */
-    public static List<JpsResult> quit() throws IllegalArgumentException, MonitorException{
+    public static List<JpsResult> quit() throws IllegalArgumentException, MonitorException, NotSupportedEnvironmentException {
         return run(new String[]{"-q"});
     }
 
@@ -52,8 +55,9 @@ public class JpsCmd {
      * @return JpsResult的集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws MonitorException 监控异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      */
-    public static List<JpsResult> withMainClassArgs() throws IllegalArgumentException, MonitorException{
+    public static List<JpsResult> withMainClassArgs() throws IllegalArgumentException, MonitorException, NotSupportedEnvironmentException {
         return run(new String[]{"-m"});
     }
 
@@ -64,8 +68,9 @@ public class JpsCmd {
      * @return JpsResult的集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws MonitorException 监控异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      */
-    public static List<JpsResult> withFullName() throws IllegalArgumentException, MonitorException{
+    public static List<JpsResult> withFullName() throws IllegalArgumentException, MonitorException, NotSupportedEnvironmentException {
         return run(new String[]{"-l"});
     }
 
@@ -76,8 +81,9 @@ public class JpsCmd {
      * @return JpsResult的集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws MonitorException 监控异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      */
-    public static List<JpsResult> withVmArgs() throws IllegalArgumentException, MonitorException{
+    public static List<JpsResult> withVmArgs() throws IllegalArgumentException, MonitorException, NotSupportedEnvironmentException {
         return run(new String[]{"-v"});
     }
 
@@ -95,9 +101,10 @@ public class JpsCmd {
      *
      * @throws IllegalArgumentException 非法参数异常
      * @throws MonitorException 监控异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      */
-    public static List<JpsResult> run(String[] var0) throws IllegalArgumentException, MonitorException {
-
+    public static List<JpsResult> run(String[] var0) throws IllegalArgumentException, MonitorException, NotSupportedEnvironmentException {
+        SystemEnvironment.checkWindowsAndOracleJdk();
         //  参数转义
         arguments = new Arguments(var0);
         if (arguments.isHelp()) {

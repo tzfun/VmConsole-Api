@@ -1,6 +1,8 @@
 package beifengtz.vmconsole;
 
 import beifengtz.vmconsole.entity.jstat.*;
+import beifengtz.vmconsole.exception.NotSupportedEnvironmentException;
+import beifengtz.vmconsole.security.SystemEnvironment;
 import beifengtz.vmconsole.tools.jstat.JStatTool;
 import sun.jvmstat.monitor.*;
 import sun.jvmstat.monitor.event.HostEvent;
@@ -45,8 +47,9 @@ public class JStatCmd {
      * @return JStatResult
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResult list() throws IllegalArgumentException, NullPointerException {
+    public static JStatResult list() throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-list"});
         if (r == null) {
             throw new NullPointerException();
@@ -62,8 +65,9 @@ public class JStatCmd {
      * @return JStatResult
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResult snap(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResult snap(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-snap", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -79,8 +83,9 @@ public class JStatCmd {
      * @return JStatResultForClass
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForClass clazz(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForClass clazz(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-class", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -103,9 +108,10 @@ public class JStatCmd {
      * @return JStatResultForClass集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForClass> clazz(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-class",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -133,8 +139,9 @@ public class JStatCmd {
      * @return JStatResultForGc
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGc gc(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGc gc(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gc", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -157,9 +164,10 @@ public class JStatCmd {
      * @return JStatResultForGc集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGc> gc(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gc",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -187,8 +195,9 @@ public class JStatCmd {
      * @return JStatResultForCompiler
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForCompiler compiler(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForCompiler compiler(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-compiler", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -211,9 +220,10 @@ public class JStatCmd {
      * @return JStatResultForCompiler集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForCompiler> compiler(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-compiler",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -241,8 +251,9 @@ public class JStatCmd {
      * @return JStatResultForGcCapacity
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGcCapacity gcCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGcCapacity gcCapacity(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gccapacity", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -265,9 +276,10 @@ public class JStatCmd {
      * @return JStatResultForGcCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGcCapacity> gcCapacity(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gccapacity",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -295,8 +307,9 @@ public class JStatCmd {
      * @return JStatResultForGcNew
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGcNew gcNew(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGcNew gcNew(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcnew", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -319,9 +332,10 @@ public class JStatCmd {
      * @return JStatResultForGcNew集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGcNew> gcNew(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcnew",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -349,8 +363,9 @@ public class JStatCmd {
      * @return JStatResultForGcNewCapacity
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGcNewCapacity gcNewCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGcNewCapacity gcNewCapacity(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcnewcapacity", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -373,9 +388,10 @@ public class JStatCmd {
      * @return JStatResultForGcNewCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGcNewCapacity> gcNewCapacity(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcnewcapacity",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -403,8 +419,9 @@ public class JStatCmd {
      * @return JStatResultForGcOld
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGcOld gcOld(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGcOld gcOld(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcold", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -427,9 +444,10 @@ public class JStatCmd {
      * @return JStatResultForGcOld集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGcOld> gcOld(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcold",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -457,8 +475,9 @@ public class JStatCmd {
      * @return JStatResultForGcOldCapacity
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGcOldCapacity gcOldCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGcOldCapacity gcOldCapacity(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcoldcapacity", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -481,9 +500,10 @@ public class JStatCmd {
      * @return JStatResultForGcOldCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGcOldCapacity> gcOldCapacitiy(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcoldcapacity",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -511,8 +531,9 @@ public class JStatCmd {
      * @return JStatResultForGcMetaCapacity
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGcMetaCapacity gcMetaCapacity(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGcMetaCapacity gcMetaCapacity(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcmetacapacity", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -535,9 +556,10 @@ public class JStatCmd {
      * @return JStatResultForGcMetaCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGcMetaCapacity> gcMetaCapacitiy(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcmetacapacity",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -565,8 +587,9 @@ public class JStatCmd {
      * @return JStatResultForGcUtil
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForGcUtil gcUtil(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForGcUtil gcUtil(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcutil", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -589,9 +612,10 @@ public class JStatCmd {
      * @return JStatResultForGcMetaCapacity集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForGcUtil> gcUtil(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-gcutil",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -619,8 +643,9 @@ public class JStatCmd {
      * @return JStatResultForCompilation
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static JStatResultForCompilation printCompilation(int vmId) throws IllegalArgumentException, NullPointerException {
+    public static JStatResultForCompilation printCompilation(int vmId) throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-printcompilation", String.valueOf(vmId)});
         if (r == null) {
             throw new NullPointerException();
@@ -643,9 +668,10 @@ public class JStatCmd {
      * @return JStatResultForCompilation集合
      * @throws IllegalArgumentException 非法参数异常
      * @throws NullPointerException 空指针异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
     public static ArrayList<JStatResultForCompilation> printCompilation(int vmId, long interval, int count)
-            throws IllegalArgumentException, NullPointerException {
+            throws IllegalArgumentException, NullPointerException, NotSupportedEnvironmentException {
         ArrayList<JStatResult> r = run(new String[]{"-printcompilation",
                 String.valueOf(vmId),
                 String.valueOf(interval),
@@ -672,8 +698,10 @@ public class JStatCmd {
      * @param var0 命令参数
      * @return {@link JStatResult}的集合
      * @throws IllegalArgumentException 参数非法异常
+     * @throws NotSupportedEnvironmentException 环境异常
      */
-    public static ArrayList<JStatResult> run(String[] var0) throws IllegalArgumentException {
+    public static ArrayList<JStatResult> run(String[] var0) throws IllegalArgumentException, NotSupportedEnvironmentException {
+        SystemEnvironment.checkWindowsAndOracleJdk();
         //  转义jStat命令参数
         arguments = new Arguments(var0);
 

@@ -1,6 +1,8 @@
 package beifengtz.vmconsole;
 
 import beifengtz.vmconsole.entity.jmap.JMapForHeapResult;
+import beifengtz.vmconsole.exception.NotSupportedEnvironmentException;
+import beifengtz.vmconsole.security.SystemEnvironment;
 import beifengtz.vmconsole.tools.jmap.HeapSummaryTool;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
@@ -39,7 +41,8 @@ public class JMapCmd {
      * @return  boolean 失败为false，成功为true
      * @throws IOException  IO异常
      */
-    public static boolean dumpAll(int vmId, String filePath) throws IOException{
+    public static boolean dumpAll(int vmId, String filePath) throws IOException, NotSupportedEnvironmentException {
+        SystemEnvironment.checkWindowsAndOracleJdk();
         try{
             dump(String.valueOf(vmId),"–dump:format=b,file="+filePath);
             return true;
@@ -57,7 +60,8 @@ public class JMapCmd {
      * @return  boolean 失败为false，成功为true
      * @throws IOException  IO异常
      */
-    public static boolean dumpLive(int vmId,  String filePath) throws IOException{
+    public static boolean dumpLive(int vmId,  String filePath) throws IOException,NotSupportedEnvironmentException{
+        SystemEnvironment.checkWindowsAndOracleJdk();
         try{
             dump(String.valueOf(vmId),"–dump:live,format=b,file="+filePath);
             return true;
@@ -73,7 +77,8 @@ public class JMapCmd {
      * @return InputStream 输出流
      * @throws IOException IO异常
      */
-    public static InputStream histoAll(int vmId) throws IOException{
+    public static InputStream histoAll(int vmId) throws IOException, NotSupportedEnvironmentException {
+        SystemEnvironment.checkWindowsAndOracleJdk();
         VirtualMachine var2 = attach(String.valueOf(vmId));
         return ((HotSpotVirtualMachine)var2).heapHisto(new Object[]{"-all"});
     }
@@ -84,7 +89,8 @@ public class JMapCmd {
      * @return InputStream 输出流
      * @throws IOException IO异常
      */
-    public static InputStream histoLive(int vmId) throws IOException{
+    public static InputStream histoLive(int vmId) throws IOException, NotSupportedEnvironmentException {
+        SystemEnvironment.checkWindowsAndOracleJdk();
         VirtualMachine var2 = attach(String.valueOf(vmId));
         return ((HotSpotVirtualMachine)var2).heapHisto(new Object[]{"-live"});
     }
@@ -97,12 +103,14 @@ public class JMapCmd {
      * @throws Exception 执行错误会抛出异常
      */
     public static JMapForHeapResult heapInfo(int vmId) throws Exception{
+        SystemEnvironment.checkWindowsAndOracleJdk();
         JMapForHeapResult jMapForHeapResult = new JMapForHeapResult();
         HeapSummaryTool.init(new String[]{String.valueOf(vmId)}, jMapForHeapResult);
         return jMapForHeapResult;
     }
 
     private static void run(String[] var0) throws Exception {
+        SystemEnvironment.checkWindowsAndOracleJdk();
         if (var0.length == 0) {
             throw new IllegalArgumentException("Input parameters cannot be empty");
         }

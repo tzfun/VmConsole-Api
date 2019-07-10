@@ -2,6 +2,8 @@ package beifengtz.vmconsole;
 
 import beifengtz.vmconsole.entity.jstack.JStackResult;
 import beifengtz.vmconsole.exception.AttachingException;
+import beifengtz.vmconsole.exception.NotSupportedEnvironmentException;
+import beifengtz.vmconsole.security.SystemEnvironment;
 import beifengtz.vmconsole.tools.jstack.JStackTool;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
@@ -38,6 +40,7 @@ public class JStackCmd {
      * @return JStackResult
      * @throws IllegalArgumentException 非法参数异常
      * @throws Exception 异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      */
     public static JStackResult threadStack(int vmId)throws IllegalArgumentException,Exception{
         return run(new String[]{"-F",String.valueOf(vmId)});
@@ -48,6 +51,7 @@ public class JStackCmd {
      * @param vmId 虚拟机唯一识别Id
      * @return JStackResult
      * @throws IllegalArgumentException 非法参数异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      * @throws Exception 异常
      */
     public static JStackResult jniStack(int vmId)throws IllegalArgumentException,Exception{
@@ -59,6 +63,7 @@ public class JStackCmd {
      * @param vmId 虚拟机唯一识别Id
      * @return JStackResult
      * @throws IllegalArgumentException 非法参数异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      * @throws Exception 异常
      */
     public static JStackResult threadDump(int vmId)throws IllegalArgumentException,Exception{
@@ -71,9 +76,12 @@ public class JStackCmd {
      * @param var0 命令参数
      * @return JStackResult
      * @throws IllegalArgumentException 非法参数异常
+     * @throws NotSupportedEnvironmentException 运行环境异常
      * @throws Exception 异常
      */
     public static JStackResult run(String[] var0) throws IllegalArgumentException,Exception {
+
+        SystemEnvironment.checkWindowsAndOracleJdk();
         if (var0.length == 0) {
             usage();
             throw new IllegalArgumentException("Parameter can not be empty.");

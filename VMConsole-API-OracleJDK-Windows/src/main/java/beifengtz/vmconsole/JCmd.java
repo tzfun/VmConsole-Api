@@ -4,6 +4,7 @@ import beifengtz.vmconsole.entity.jcmd.JCmdEnum;
 import beifengtz.vmconsole.entity.jcmd.JCmdProcess;
 import beifengtz.vmconsole.entity.jcmd.JCmdResult;
 import beifengtz.vmconsole.exception.NotAvailableException;
+import beifengtz.vmconsole.security.SystemEnvironment;
 import beifengtz.vmconsole.tools.jcmd.ArgumentsTool;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
@@ -123,6 +124,9 @@ public class JCmd {
      * @throws Exception 异常
      */
     private static JCmdResult run(String[] var0) throws Exception{
+
+        SystemEnvironment.checkWindowsAndOracleJdk();
+
         ArgumentsTool var1 = null;
 
         try {

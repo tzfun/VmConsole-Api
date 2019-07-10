@@ -1,10 +1,9 @@
 package beifengtz.vmconsole;
 
-import beifengtz.vmconsole.entity.jcmd.JCmdEnum;
-import beifengtz.vmconsole.entity.jmap.JMapForHeapResult;
+import beifengtz.vmconsole.exception.NotSupportedEnvironmentException;
+import beifengtz.vmconsole.security.SystemEnvironment;
 import org.junit.Test;
 
-import java.io.InputStream;
 
 /**
  * @author beifengtz
@@ -13,6 +12,12 @@ import java.io.InputStream;
  * Created in 9:07 2019/7/10
  */
 public class VMConsoleTest {
+
+    @Test
+    public void environmentTest() throws NotSupportedEnvironmentException {
+        SystemEnvironment.checkWindowsAndOracleJdk();
+        System.out.println("System is supported.");
+    }
 
     @Test
     public void JpsTest() throws Exception {
