@@ -2,71 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f9ebae2-a2a5-4bce-a105-098d90e315bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/VMConsole-API-OpenJDK-Linux/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/VmConsole_Api_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VmConsole-Api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/VmConsole-Api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JCmdTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JInfoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JMapTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JStackTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JStatTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/test/JpsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JCmd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JInfoCmd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JMapCmd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JStackCmd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JStatCmd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/JpsCmd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/JvmResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jcmd/JCmdEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jcmd/JCmdProcess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jcmd/JCmdResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jinfo/JInfoFlag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jinfo/JInfoNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jinfo/JInfoResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForG1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapForGen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/HeapSpace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jmap/JMapForHeapUsage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jps/JpsResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstack/JStackResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstack/ThreadStack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForCompilation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForCompiler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcCapacity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcMetaCapacity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcNew.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcNewCapacity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcOld.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcOldCapacity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/entity/jstat/JStatResultForGcUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/exception/AttachingException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/exception/ConfigurationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/exception/NotAvailableException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/exception/NotImplementedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/exception/UnInitException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/exception/UnKnowException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/MyTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jcmd/ArgumentsTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jinfo/JInfoTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jinfo/SysPropsDumperTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jmap/HeapSummaryTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/JStackTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/PStackTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstack/StackTraceTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstat/JStatResultTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beifengtz/vmconsole/tools/jstat/JStatTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/src/test/java/beifengtz/vmconsole/VMConsoleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/src/test/java/beifengtz/vmconsole/VMConsoleTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -89,18 +27,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="989">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="345">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/pom.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/src/test/java/beifengtz/vmconsole/VMConsoleTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VMConsole-API-OpenJDK-Linux/pom.xml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -114,6 +68,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/pom.xml" />
+        <option value="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/src/test/java/beifengtz/vmconsole/VMConsoleTest.java" />
       </list>
     </option>
   </component>
@@ -129,6 +85,9 @@
     <option name="y" value="-25" />
     <option name="width" value="1940" />
     <option name="height" value="1100" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -158,7 +117,41 @@
               <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
               <item name="VMConsole-API-OracleJDK-Windows" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VMConsoleAPI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="VMConsole-API-OracleJDK-Windows" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VMConsoleAPI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="VMConsole-API-OracleJDK-Windows" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VMConsoleAPI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="VMConsole-API-OracleJDK-Windows" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VMConsoleAPI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VmConsole-Api" type="462c0819:PsiDirectoryNode" />
+              <item name="VMConsole-API-OracleJDK-Windows" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="beifengtz" type="462c0819:PsiDirectoryNode" />
+              <item name="vmconsole" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VMConsoleAPI" type="b2602c69:ProjectViewProjectNode" />
@@ -179,6 +172,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/src/main/java" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="beifengtz.vmconsole" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\My personal file\programme study\MY_Program\github\VmConsole-Api\VMConsole-API-OracleJDK-Windows\src\main\java" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -248,12 +249,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1562722390943</updated>
-      <workItem from="1562722394079" duration="315000" />
+      <workItem from="1562722394079" duration="1994000" />
     </task>
+    <task id="LOCAL-00001" summary="将项目全面修改为Maven项目，并构建多模块以支持多环境，添加Junit测试">
+      <created>1562722938151</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1562722938151</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="VMConsoleTest_JpsTest - 2019.07.10 at 09h 40m 27s.xml">
+      <configuration name="VMConsoleTest.JpsTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="315000" />
+    <option name="totallyTimeSpent" value="1994000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -265,15 +279,17 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Statistic" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="MyBatis Sql Log" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297587" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -293,6 +309,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="将项目全面修改为Maven项目，并构建多模块以支持多环境，添加Junit测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="将项目全面修改为Maven项目，并构建多模块以支持多环境，添加Junit测试" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/VMConsole-API-Windows/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -300,18 +320,32 @@
     <entry file="file://$PROJECT_DIR$/VMConsole-API-Linux/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/VMConsole-API-OpenJDK-Linux/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="345">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/src/test/java/beifengtz/vmconsole/VMConsoleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/VMConsole-API-OracleJDK-Windows/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VMConsole-API-OpenJDK-Linux/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
