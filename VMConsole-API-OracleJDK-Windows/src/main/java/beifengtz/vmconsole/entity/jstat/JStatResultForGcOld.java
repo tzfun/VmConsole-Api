@@ -59,7 +59,7 @@ public class JStatResultForGcOld extends JStatResult {
                 ", fgc=" + fgc +
                 ", fgct=" + fgct +
                 ", gct=" + gct +
-                '}';
+                "}\n";
     }
 
     public double getMc() {

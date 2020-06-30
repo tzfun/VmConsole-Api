@@ -21,7 +21,7 @@ public class HeapForGen {
                 ", youngFrom=" + youngFrom +
                 ", youngTo=" + youngTo +
                 ", oldGen=" + oldGen +
-                '}';
+                "}\n";
     }
 
     public HeapSpace getNewGen() {

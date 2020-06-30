@@ -59,7 +59,7 @@ public class JStatResultForGcMetaCapacity extends JStatResult {
                 ", fgc=" + fgc +
                 ", fgct=" + fgct +
                 ", gct=" + gct +
-                '}';
+                "}\n";
     }
 
     public double getMcmn() {

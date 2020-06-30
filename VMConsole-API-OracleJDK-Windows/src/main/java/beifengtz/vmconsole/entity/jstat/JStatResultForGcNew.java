@@ -63,7 +63,7 @@ public class JStatResultForGcNew extends JStatResult {
                 ", eu=" + eu +
                 ", ygc=" + ygc +
                 ", ygct=" + ygct +
-                '}';
+                "}\n";
     }
 
     public double getS0c() {

@@ -18,7 +18,7 @@ public class JMapForHeapUsage {
         return "JMapForHeapUsage{" +
                 "heapForGen=" + heapForGen +
                 ", heapForG1=" + heapForG1 +
-                '}';
+                "}\n";
     }
 
     public HeapForGen getHeapForGen() {

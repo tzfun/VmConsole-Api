@@ -47,7 +47,7 @@ public class JpsResult extends JvmResult {
                 ", errMessage='" + errMessage + '\'' +
                 ", errStacks=" + errStacks +
                 ", strResult='" + strResult + '\'' +
-                '}';
+                "}\n";
     }
 
     public String getMainClass() {

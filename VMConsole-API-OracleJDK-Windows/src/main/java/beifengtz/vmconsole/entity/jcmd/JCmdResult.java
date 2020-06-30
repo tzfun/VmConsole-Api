@@ -22,7 +22,7 @@ public class JCmdResult extends JvmResult {
         return "JCmdResult{" +
                 "processes=" + processes +
                 ", result='" + result + '\'' +
-                '}';
+                "}\n";
     }
 
     public JCmdResult() {

@@ -1,5 +1,6 @@
 package beifengtz.vmconsole;
 
+import beifengtz.vmconsole.entity.jcmd.JCmdEnum;
 import beifengtz.vmconsole.exception.NotSupportedEnvironmentException;
 import beifengtz.vmconsole.security.SystemEnvironment;
 import org.junit.Test;
@@ -13,6 +14,8 @@ import org.junit.Test;
  */
 public class VMConsoleTest {
 
+    private final static int VM_ID = 3520;
+
     @Test
     public void environmentTest() throws NotSupportedEnvironmentException {
         SystemEnvironment.checkWindowsAndOracleJdk();
@@ -21,22 +24,22 @@ public class VMConsoleTest {
 
     @Test
     public void JpsTest() throws Exception {
-        System.out.println(JpsCmd.quit());
+//        System.out.println(JpsCmd.quit());
         System.out.println(JpsCmd.withFullName());
-        System.out.println(JpsCmd.withMainClassArgs());
-        System.out.println(JpsCmd.withVmArgs());
+//        System.out.println(JpsCmd.withMainClassArgs());
+//        System.out.println(JpsCmd.withVmArgs());
     }
 
     @Test
     public void JCmdTest() throws Exception {
-//        System.out.println(JCmd.executeCommand(11004, JCmdEnum.GC_RUN));
+//        System.out.println(JCmd.executeCommand(VM_ID, JCmdEnum.GC_RUN));
     }
 
     @Test
     public void JInfoTest() throws Exception {
-//        System.out.println(JInfoCmd.run(new String[]{"-flag", "CICompilerCount=3", "11004"}));
-//        System.out.println(JInfoCmd.run(new String[]{"-flag","+HeapDumpOnOutOfMemoryError","11004"}));
-//        System.out.println(JInfoCmd.run(new String[]{"-flag","-HeapDumpOnOutOfMemoryError","11004"}));
+//        System.out.println(JInfoCmd.run(new String[]{"-flag", "CICompilerCount=3", String.valueOf(VM_ID)}));
+        System.out.println(JInfoCmd.run(new String[]{"-flag","+HeapDumpOnOutOfMemoryError",String.valueOf(VM_ID)}));
+        System.out.println(JInfoCmd.run(new String[]{"-flag","-HeapDumpOnOutOfMemoryError",String.valueOf(VM_ID)}));
     }
 
     @Test
@@ -60,27 +63,27 @@ public class VMConsoleTest {
 
     @Test
     public void JStackTest() throws Exception {
-//        int vmId = 11004;
 //
-//        System.out.println(JStackCmd.threadDump(vmId));
-//        System.out.println(JStackCmd.threadStack(vmId));
-//        System.out.println(JStackCmd.jniStack(vmId));
+//        System.out.println(JStackCmd.threadDump(VM_ID));
+        System.out.println(JStackCmd.threadStack(VM_ID));
+//        System.out.println(JStackCmd.jniStack(VM_ID));
     }
 
     @Test
     public void JStatTest() throws Exception {
-//        int vmId = 11004;
-//
 //        System.out.println(JStatCmd.list());
-//        System.out.println(JStatCmd.snap(vmId));
-//        System.out.println(JStatCmd.clazz(vmId));
-//        System.out.println(JStatCmd.gc(vmId));
-//        System.out.println(JStatCmd.gcNew(vmId));
-//        System.out.println(JStatCmd.gcOld(vmId));
-//        System.out.println(JStatCmd.gcNewCapacity(vmId));
-//        System.out.println(JStatCmd.gcOldCapacity(vmId));
-//        System.out.println(JStatCmd.gcMetaCapacity(vmId));
-//        System.out.println(JStatCmd.compiler(vmId));
-//        System.out.println(JStatCmd.printCompilation(vmId));
+//        System.out.println(JStatCmd.snap(VM_ID));
+//        System.out.println(JStatCmd.clazz(VM_ID));
+        System.out.println(JStatCmd.gc(VM_ID));
+//        System.out.println(JStatCmd.gc(VM_ID,1000,10));
+//        System.out.println(JStatCmd.gcUtil(VM_ID,1000,10));
+//        System.out.println(JStatCmd.gcNew(VM_ID));
+//        System.out.println(JStatCmd.gcOld(VM_ID));
+//        System.out.println(JStatCmd.gcNewCapacity(VM_ID));
+//        System.out.println(JStatCmd.gcNewCapacity(VM_ID,1000,10));
+//        System.out.println(JStatCmd.gcOldCapacity(VM_ID));
+//        System.out.println(JStatCmd.gcMetaCapacity(VM_ID));
+//        System.out.println(JStatCmd.compiler(VM_ID));
+//        System.out.println(JStatCmd.printCompilation(VM_ID));
     }
 }

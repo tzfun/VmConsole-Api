@@ -37,7 +37,7 @@ public class JStatResultForCompilation extends JStatResult {
                 ", size=" + size +
                 ", type=" + type +
                 ", method='" + method + '\'' +
-                '}';
+                "}\n";
     }
 
     public int getCompiled() {

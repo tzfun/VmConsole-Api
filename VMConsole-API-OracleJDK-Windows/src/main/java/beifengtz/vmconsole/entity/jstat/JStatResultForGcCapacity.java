@@ -92,7 +92,7 @@ public class JStatResultForGcCapacity extends JStatResult {
                 ", ccsc=" + ccsc +
                 ", ygc=" + ygc +
                 ", fgc=" + fgc +
-                '}';
+                "}\n";
     }
 
     public double getNgcmn() {

@@ -30,7 +30,7 @@ public class JInfoResult extends JvmResult {
                 ", commandLine='" + commandLine + '\'' +
                 ", commandType='" + commandType + '\'' +
                 ", setSuccess=" + setSuccess +
-                '}';
+                "}\n";
     }
 
     public JInfoResult() {

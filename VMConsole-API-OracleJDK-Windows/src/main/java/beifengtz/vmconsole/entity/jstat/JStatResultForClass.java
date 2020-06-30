@@ -41,7 +41,7 @@ public class JStatResultForClass extends JStatResult {
                 ", unLoaded=" + unLoaded +
                 ", unBytes=" + unBytes +
                 ", time=" + time +
-                '}';
+                "}\n";
     }
 
     public int getLoaded() {

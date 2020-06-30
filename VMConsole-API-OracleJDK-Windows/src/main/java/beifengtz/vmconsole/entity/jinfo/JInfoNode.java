@@ -21,7 +21,7 @@ public class JInfoNode {
         return "JInfoNode{" +
                 "option='" + option + '\'' +
                 ", value='" + value + '\'' +
-                '}';
+                "}\n";
     }
 
     public String getOption() {

@@ -46,7 +46,7 @@ public class JStatResultForCompiler extends JStatResult {
                 ", time=" + time +
                 ", failedType=" + failedType +
                 ", failedMethod='" + failedMethod + '\'' +
-                '}';
+                "}\n";
     }
 
     public int getCompiled() {

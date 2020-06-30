@@ -23,7 +23,7 @@ public class HeapSpace {
                 ", used='" + used + '\'' +
                 ", free='" + free + '\'' +
                 ", useRatio='" + useRatio + '\'' +
-                '}';
+                "}\n";
     }
 
     public HeapSpace(String name, String capacity, String used, String free, String useRatio) {

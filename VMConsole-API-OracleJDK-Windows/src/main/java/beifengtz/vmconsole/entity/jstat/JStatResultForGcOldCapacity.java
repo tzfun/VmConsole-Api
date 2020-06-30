@@ -51,7 +51,7 @@ public class JStatResultForGcOldCapacity extends JStatResult {
                 ", fgc=" + fgc +
                 ", fgct=" + fgct +
                 ", gct=" + gct +
-                '}';
+                "}\n";
     }
 
     public double getOgcmn() {

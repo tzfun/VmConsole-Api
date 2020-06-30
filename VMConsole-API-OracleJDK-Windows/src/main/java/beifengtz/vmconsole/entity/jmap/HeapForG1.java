@@ -19,7 +19,7 @@ public class HeapForG1 {
                 ", eden=" + eden +
                 ", survivor=" + survivor +
                 ", old=" + old +
-                '}';
+                "}\n";
     }
 
     public HeapSpace getHeap() {

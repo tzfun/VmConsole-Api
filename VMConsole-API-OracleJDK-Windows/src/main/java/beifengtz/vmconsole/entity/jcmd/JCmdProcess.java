@@ -37,7 +37,7 @@ public class JCmdProcess {
         return "JCmdProcess{" +
                 "vmId=" + vmId +
                 ", content='" + content + '\'' +
-                '}';
+                "}\n";
     }
 
     public int getVmId() {

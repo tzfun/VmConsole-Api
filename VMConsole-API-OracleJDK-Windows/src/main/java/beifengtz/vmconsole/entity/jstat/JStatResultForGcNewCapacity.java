@@ -63,7 +63,7 @@ public class JStatResultForGcNewCapacity extends JStatResult {
                 ", ec=" + ec +
                 ", ygc=" + ygc +
                 ", fgc=" + fgc +
-                '}';
+                "}\n";
     }
 
     public double getNgcmn() {

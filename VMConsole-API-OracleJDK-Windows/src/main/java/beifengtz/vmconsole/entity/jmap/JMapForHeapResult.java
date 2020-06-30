@@ -24,7 +24,7 @@ public class JMapForHeapResult extends JvmResult {
         return "JMapForHeapResult{" +
                 "heapConf=" + heapConf +
                 ", heapUsage=" + heapUsage +
-                '}';
+                "}\n";
     }
 
     public HashMap<String, Object> getHeapConf() {

@@ -27,7 +27,7 @@ public class ThreadStack {
                 ", deadLocks='" + deadLocks + "\'\n" +
                 ", currentJavaSP='" + currentJavaSP + "\'\n" +
                 ", concurrentLocks='" + concurrentLocks + "\'\n" +
-                '}';
+                "}\n";
     }
 
     public String getId() {

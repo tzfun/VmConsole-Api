@@ -32,7 +32,7 @@ public class JStatResult extends JvmResult {
                 "vmId=" + super.getVmId() +
                 ", names=" + names +
                 ", snapShot=" + snapShot +
-                '}';
+                "}\n";
     }
 
     public String getStrResult() {

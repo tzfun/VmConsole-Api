@@ -31,7 +31,7 @@ public class JStackResult extends JvmResult {
                 ", threadStacks=" + threadStacks +
                 ", jniStack=" + jniStack +
                 ", threadDump='" + threadDump + "\'" +
-                "} ";
+                "}\n";
     }
 
     public List<ThreadStack> getThreadStacks() {

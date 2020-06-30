@@ -249,6 +249,7 @@ public abstract class MyTool implements Runnable {
                         case 2:
 //                            out.println("Attaching to remote server " + remoteServer + ", please wait...");
                             this.agent.attach(remoteServer);
+                            break;
                     }
                 } catch (DebuggerException var10) {
                     String errMsg = null;
@@ -264,12 +265,14 @@ public abstract class MyTool implements Runnable {
                         case 2:
                             errMsg = "Error attaching to remote server: ";
                             errStr.append(errMsg);
+                            break;
                     }
 
                     if (var10.getMessage() != null) {
                         errStr.append(var10.getMessage());
                         errStr.append("\n");
                     }
+                    var10.printStackTrace();
                     throw new AttachingException(errMsg);
                 }
                 this.startInternal(jvmResult);
